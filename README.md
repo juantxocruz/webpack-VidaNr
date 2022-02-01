@@ -1,4 +1,4 @@
-# Webpack 5 Frontend Starterkit
+# Webpack 5 VidaNr calculator
 
 A lightweight foundation for your next webpack based frontend project.
 
