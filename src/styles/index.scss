@@ -1,5 +1,13 @@
-@import "~@csstools/normalize.css";
-@import "./variables.scss";
+@import "./reset";
+@import "./variables";
+
+@import "./avia.sass";
+@import "./layout";
+@import "./typography";
+@import "./margins";
+@import "./form";
+@import "./modal-window";
+@import "./print";
 
 html {
   /* 62.5% of 16px base font size is 10px */
