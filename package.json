@@ -1,7 +1,7 @@
 {
-  "name": "webpack-starter",
+  "name": "nacionalRe VidaNr",
   "version": "1.0.0",
-  "description": "A light foundation for your next frontend project based on webpack 5.",
+  "description": "VidaNr calculator frontend project based on webpack 5.",
   "scripts": {
     "lint": "npm run lint:styles; npm run lint:scripts",
     "lint:styles": "stylelint src",

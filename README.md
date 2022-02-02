@@ -1,5 +1,6 @@
 # Webpack 5 VidaNr calculator
 
+[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 VidaNr NacionalRe Calculator
 
 ### Installation
