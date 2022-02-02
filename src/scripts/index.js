@@ -195,7 +195,7 @@ function getFormInputs() {
 
 function setSubmitButtonState() {
   let button = document.getElementById('submit_button');
-  if (fieldsOn()) {
+  if (fieldsOn()["length"] === 0) {
     return button.classList.add("fieldsOn");
   }
   else {
@@ -231,10 +231,17 @@ function fieldsOn() {
   let i = 0;
   for (i = 0; i < nodeList.length; i++) {
     if (nodeList[i].type === "checkbox" && nodeList[i].checked) {
-      wrongFields.push(nodeList[i]);
+      wrongFields.push(
+        {
+          type: nodeList[i].type,
+          list: nodeList[i]
+        });
     }
     if ((nodeList[i].type === "date" || nodeList[i].type === "number") && nodeList[i].value === "" && nodeList[i].dataset.type !== 'hypertension') {
-      wrongFields.push(nodeList[i]);
+      wrongFields.push({
+        type: nodeList[i].type,
+        list: nodeList[i]
+      });
     }
     if (nodeList[i].type === "number" && nodeList[i].dataset.type === 'hypertension') {
       hypertensionFields.push(nodeList[i]);
@@ -251,14 +258,14 @@ function fieldsOn() {
   }
   // tension resume phrase is green and 'Compensada'
   if (!isCompensatedTension()) {
-    wrongFields.push({});
+    wrongFields.push({ type: "isCompensatedTension" });
   }
 
   if (!radioButtonOn(["gender", "cholesterol"])) {
-    wrongFields.push({});
+    wrongFields.push({ type: "radioButtonOn" });
   }
 
-  return wrongFields.length > 0 ? false : true;
+  return wrongFields;
 }
 
 function resetNodeFields(nodeList) {
@@ -717,12 +724,9 @@ function initSubmit() {
     );
 
 
+    let fields = fieldsOn();
 
-    // checkHypertensionMean = checkHypertensionMean(_hypertension_mean);
-
-
-
-    if (fieldsOn()) {
+    if (fields["length"] === 0) {
 
 
       // vars from form
@@ -754,13 +758,15 @@ function initSubmit() {
       openModalResults(e, _formInputs, $result, $insurance, $inMax);
 
     } else {
-      if (isNotCompensatedTension()) {
+      if (fields && fields["length"] === 1 && fields[0].type === 'isCompensatedTension') {
         modalSetup.header = 'Tarificación cancelada.';
         modalSetup.content = 'La diferencia entre la tensión sistólica y la tensión diástolica es menor de 20 y, por tanto, está muy descompensada.';
         modalSetup.action = "Por favor, asegúrese de que la cifra es correcta para poder realizar la tarificación.";
         openModalWindow(e, modalSetup);
         return false;
+
       }
+
       openModalWindow(e, fieldsOffModalSetup);
       return false;
     }
