@@ -310,7 +310,7 @@ export function openModalResults(event, _vars, $results, $insurance, $inMax, _li
     let charge = $insurance.life + '%';
     let lifeExpectancyTable = drawLifeExpectancyTable(_lifeExpectancy);
 
-    result_vars_charge.innerHTML = charge;
+    result_vars_charge.innerHTML = "+" + charge;
     result_charge_table.innerHTML = lifeExpectancyTable;
 
 

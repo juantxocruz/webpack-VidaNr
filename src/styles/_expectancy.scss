@@ -1,9 +1,8 @@
 .life-expectancy {
  
-
-  p.small,
-  small {
-    font-size: 12px;
+  th
+  {
+  display: table-cell;
   }
 
   p.big {
@@ -15,10 +14,11 @@
   }
 
   p.big span {
-    background: whitesmoke;
+    background: transparent;
     display: inline-block;
     padding: 16px;
     border-radius: 4px;
+    font-weight: 400;
   }
 
   h2 {
