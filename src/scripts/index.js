@@ -60,7 +60,7 @@ let $diastolic = formForm.elements['diastolic'];
 let birthdayModalSetup = {
   header: "Fecha incorrecta",
   content: "La fecha seleccionada no puede ser mayor que la fecha actual.",
-  action: "Por favor, escoga una fecha de nuevo",
+  action: "Por favor, escoja una fecha de nuevo",
   footer: "© NacionalRe. Todos los derechos reservados."
 }
 
@@ -78,7 +78,7 @@ const diastolicRange = [45, 124];
 
 let dateRangeModalSetup = {
   header: "Atención: Fecha fuera de rango",
-  content: "Por favor, escoga una fecha en el rango (entre " + dateRange[0] + " y " + dateRange[1] + " años de edad).",
+  content: "Por favor, escoja una fecha en el rango (entre " + dateRange[0] + " y " + dateRange[1] + " años de edad).",
   action: "La fecha seleccionada debe estar entre el " + subtractYearsToDate(new Date(), dateRange[1]).toLocaleDateString('es-ES', dateOptions) + " y el " + subtractYearsToDate(new Date(), dateRange[0]).toLocaleDateString('es-ES', dateOptions) + ".",
   footer: "© NacionalRe"
 }
@@ -587,7 +587,7 @@ function initNumericField(name) {
         let _systolic = e.currentTarget.value; // string 
 
         if (parseInt(_systolic) > systolicRange[1]) {
-          modalSetup.content = 'La tensión sistólica es muy alta para asegurar el riesgo. Debe introducir una tensión diástolica menor de ' + systolicRange[1] + '.';
+          modalSetup.content = 'La tensión sistólica es muy alta para asegurar el riesgo. Debe introducir una tensión diastólica menor de ' + systolicRange[1] + '.';
           modalSetup.action = "Por favor, asegúrese de que la cifra es correcta."
           openModalWindow(e, modalSetup);
           e.currentTarget.value = '';
