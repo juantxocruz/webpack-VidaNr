@@ -405,8 +405,8 @@
 
         <div class="row send margin__top-m">
           <div class="col-4">
-            <input id="pdf_button" type="button" name='pdf_button' value="Cuestionario" autocomplete="off"
-              onClick="window.open('http://davinci.nacionalre.es/pdfs/cuesdiab.pdf');">
+            <!--    <input id="pdf_button" type="button" name='pdf_button' value="Cuestionario" autocomplete="off"
+              onClick="window.open('http://davinci.nacionalre.es/pdfs/cuesdiab.pdf');"> -->
           </div>
           <div class="col-4">
             <input id="reset_button" type="reset" name='reset_button' value="Restaurar" autocomplete="off">
@@ -476,7 +476,24 @@
 
           </div>
 
-          <div class="container modal">
+          <div class="container modal life-expectancy">
+            <!-- Life Expectancy results -->
+            <p>Recargo del seguro de vida:</p>
+            <div class="row">
+
+              <div class="col-3-plus">
+
+
+                <p class="big"><span id="result_vars_charge">
+
+                  </span></p>
+                <hr class="hr">
+              </div>
+              <div class="col-9">
+                <div id="result_charge_table"></div>
+              </div>
+            </div>
+
             <div class="row">
               <div class="col-3">
 

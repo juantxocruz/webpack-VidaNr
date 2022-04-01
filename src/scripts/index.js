@@ -34,6 +34,7 @@ import { modalSetup, openModalWindow, initModalWindow } from './modal_window';
 import { calcTension } from './tension_matrix_calc';
 import { calcTobacco } from './tobacco_calc';
 import { calcImc, setImcColor } from './imc_calc';
+import { calculateLifeExpectancy } from './lifeExpectancyCalc';
 
 if (process.env.NODE_ENV === 'development') {
   require('../index.html');
@@ -753,9 +754,17 @@ function initSubmit() {
         return false;
       }
 
+      // life Expectancy
+      let _lifeExpectancy = calculateLifeExpectancy({
+        age: _formInputs.age,
+        charge: $insurance.life, // important
+        date: _formInputs.date,
+        gender: _formInputs.gender,
+        today: new Date()
 
+      });
       // OPEN results
-      openModalResults(e, _formInputs, $result, $insurance, $inMax);
+      openModalResults(e, _formInputs, $result, $insurance, $inMax, _lifeExpectancy);
 
     } else {
       if (fields && fields["length"] === 1 && fields[0].type === 'isCompensatedTension') {

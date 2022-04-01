@@ -227,9 +227,48 @@ function getTableResult(data, $insurance, key) {
 
 }
 
+function getGkTableName(gender) {
+
+    return gender === 'm' ? "GKM95" : "GKF95";
+
+}
+
+function drawLifeExpectancyTable(_expectancy) {
+
+    let table = '';
+    table += '<table class="table charge-table" style="width:100%">';
+    table += '<thead>';
+    table += '<tr><th></th>';
+    table += '<th>PASEMF</th>';
+    table += '<th>' + getGkTableName(_expectancy.gk95.gender) + '<br></th>';
+    // table += '<th>GKM95<br></th>';
+    table += '</tr>';
+    table += '</thead>';
+    table += '<tbody>';
+    table += '</tr>';
+    table += '<td>' + 'Normal' + '</td>';
+    table += ' <td>' + _expectancy.gk80.expectancy + ' años</td>';
+    table += ' <td>' + _expectancy.gk95.expectancy + ' años</td>';
+    table += '</tr>';
+
+    if (_expectancy.gk80.charge > 0 || _expectancy.gk95.charge > 0) {
+        table += '</tr>';
+        table += ' <td>' + 'Agravado' + '</td>';
+        table += ' <td class="red" style="font-weight:700">' + _expectancy.gk80.expectancyWithCharge + ' años</td>';
+        table += ' <td class="red" style="font-weight:700">' + _expectancy.gk95.expectancyWithCharge + ' años</td>';
+        table += '</tr>';
+    }
+    table += '</tbody>';
+    table += '</table>';
+
+    return table;
 
 
-export function openModalResults(event, _vars, $results, $insurance, $inMax) {
+}
+
+
+
+export function openModalResults(event, _vars, $results, $insurance, $inMax, _lifeExpectancy) {
     event.stopPropagation();
 
     // vars
@@ -265,8 +304,18 @@ export function openModalResults(event, _vars, $results, $insurance, $inMax) {
     let table_illness = getTableResult($results, $insurance, 'serious_illness');
     let table_ilt = getTableResult($results, $insurance, 'ilt');
 
+    // table life expectancy
+    let result_vars_charge = self.getElementById('result_vars_charge');
+    let result_charge_table = self.getElementById('result_charge_table');
+    let charge = $insurance.life + '%';
+    let lifeExpectancyTable = drawLifeExpectancyTable(_lifeExpectancy);
+
+    result_vars_charge.innerHTML = charge;
+    result_charge_table.innerHTML = lifeExpectancyTable;
+
 
     // print
+    // tables vidaNR
     result_today.innerHTML = today;
     result_year.innerHTML = year;
     result_vars_constitution.innerHTML = constitution;

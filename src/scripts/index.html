@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="es-ES" class="responsive">
+
+<head>
+    <title>Vida-calc</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Juantxo Cruz">
+    <meta name="description" content="Caculadora de riesgos Vida, NacionalRe">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
+
+</head>
+
+<body>
+    <div id="vidanr_cal" class="vidaNr-calc">
+
+        <div class="container vidaNr-form">
+            <form action="" method="" target="_blank" class="vidaNr-form" id="vidanr_form" name="vidanr_form">
+                <div class="row">
+
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="form-title">Género</p>
+                                <p class="mandatory"><span id='gender_msg'><small>Campo
+                                            obligatorio.</small></span>&nbsp;</p>
+
+                                <ul class="vertical">
+                                    <li><input type="radio" id="male" name="gender" value="male" autocomplete="off">
+                                        <label for="male">Hombre</label>
+                                    </li>
+                                    <li><input type="radio" id="female" name="gender" value="female" autocomplete="off">
+                                        <label for="female">Mujer</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <p class="form-title">Fecha nacimiento</p>
+                                <p class="numeric"><small><label for="years_diabetes">&nbsp;</label></small>
+                                </p>
+
+                                <input class="margin__top-s row numeric" type="date" id="birthday" name="birthday"
+                                    value="" autocomplete="off">
+                                <p class="mandatory"><span id='birthday_msg'><small>Fecha
+                                            obligatoria.</small></span>&nbsp;</p>
+
+
+                            </div>
+
+                        </div> <!-- row -->
+
+
+                        <div class="row">
+                            <div class="col-6">
+
+                            </div>
+                            <div class="col-6">
+
+
+                            </div>
+
+                        </div><!-- row -->
+                    </div>
+
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-6">
+
+                            </div>
+                            <div class="col-6">
+
+
+                            </div>
+
+                        </div> <!-- row -->
+
+
+                        <div class="row">
+                            <div class="col-6">
+
+                            </div>
+                            <div class="col-6">
+
+
+                            </div>
+
+                        </div><!-- row -->
+                    </div>
+
+
+                </div>
+                <hr class="hr">
+
+                <div class="row">
+                    <div class="col-4">
+                        <p class="form-title">Constitución</p>
+                        <small>&nbsp;</small>
+                        <table class="regular margin__top-xs">
+                            <tr>
+                                <td>Peso (kg)
+                                    <p class="mandatory"><span id='weight_msg'><small>Campo
+                                                obligatorio.</small></span>&nbsp;</p>
+
+                                </td>
+                                <td><input type="number" id="weight" name="weight" maxlength="3" min="0" max="600"
+                                        autocomplete="off">
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Altura (cm)
+
+                                    <p class="mandatory"><span id='height_msg'><small>Campo
+                                                obligatorio.</small></span>&nbsp;</p>
+
+                                </td>
+                                <td><input type="number" id="height" name="height" min="0" max="280" autocomplete="off">
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Índice Masa
+
+                                    <p class="mandatory"><span id='body_mass_msg'><small>Campo
+                                                obligatorio.</small></span>&nbsp;</p>
+
+                                </td>
+                                <td><input class='bold' type="text" id="body_mass" name="body_mass" min="0" max="50"
+                                        autocomplete="off" readonly></td>
+                            </tr>
+                        </table>
+
+
+                    </div>
+                    <div class="col-4">
+                        <p class="form-title">Tabaco</p>
+                        <small>Consumo diario</small>
+                        <table class="regular margin__top-xs">
+                            <tr>
+                                <td>Cigarrillos
+                                    <p class="mandatory"><span id='cigarettes_msg'><small>Campo
+                                                obligatorio.</small></span>&nbsp;</p>
+
+                                </td>
+                                <td><input type="number" id="cigarettes" name="cigarettes" min="0" max="100"
+                                        autocomplete="off" value=0>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Puros
+
+                                    <p class="mandatory"><span id='cigars_msg'><small>Campo
+                                                obligatorio.</small></span>&nbsp;</p>
+
+                                </td>
+                                <td><input type="number" id="cigars" name="cigars" min="0" max="100" autocomplete="off"
+                                        value=0>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Pipa
+                                    <p class="mandatory"><span id='pipes_msg'><small>Campo
+                                                obligatorio.</small></span>&nbsp;</p>
+
+                                </td>
+                                <td><input type="number" id="pipes" name="pipes" min="0" max="50" autocomplete="off"
+                                        value=0>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                    </div>
+                    <div class="col-4">
+                        <p class="form-title">Alcohol</p>
+                        <small>Consumo diario</small>
+                        <table class="regular margin__top-xs">
+                            <tr>
+                                <td>Vinos
+
+                                    <p class="mandatory"><span id='wines_msg'><small>Campo
+                                                obligatorio.</small></span>&nbsp;</p>
+
+                                </td>
+                                <td><input type="number" id="wines" name="wines" min="0" max="100" autocomplete="off"
+                                        value=0>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Cervezas
+
+                                    <p class="mandatory"><span id='beers_msg'><small>Campo
+                                                obligatorio.</small></span>&nbsp;</p>
+
+                                </td>
+                                <td><input type="number" id="beers" name="beers" min="0" max="100" autocomplete="off"
+                                        value=0>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Licores
+                                    <p class="mandatory"><span id='spirits_msg'><small>Campo
+                                                obligatorio.</small></span>&nbsp;</p>
+
+                                </td>
+                                <td><input type="number" id="spirits" name="spirits" min="0" max="50" autocomplete="off"
+                                        value=0>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                    </div>
+
+
+                </div><!-- row -->
+                <hr class="hr">
+                <div class="row">
+                    <div class="col-9">
+                        <p class="form-title">Tensión arterial</p>
+                        <p><small>Presión arterial (mm Hg.). Teclee al menos una toma.</small></p>
+                        <div class="col-4">
+
+
+                            <table class="regular margin__top-xs">
+                                <tr>
+                                    <td colspan="3" class="all-petite-caps">Primera toma </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp
+                                    </td>
+                                    <td>Sistólica 1
+                                        <p class="mandatory"><span id='systolic_1_msg'
+                                                data-type="tension-msg"><small>Campo
+                                                    obligatorio.</small></span>&nbsp;</p>
+                                    </td>
+
+                                    <td><input type="number" id="systolic_1" name="systolic_1" min="0" max="200"
+                                            autocomplete="off" data-type="hypertension">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+
+                                <tr>
+                                    <td>&nbsp;
+                                    </td>
+                                    <td>Diastólica 1
+                                        <p class="mandatory"><span id='diastolic_1_msg'
+                                                data-type="tension-msg"><small>Campo
+                                                    obligatorio.</small></span>&nbsp;</p>
+                                    </td>
+
+                                    <td><input type="number" id="diastolic_1" name="diastolic_1" min="0" max="200"
+                                            autocomplete="off" data-type="hypertension">
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </table>
+
+
+                        </div>
+
+                        <div class="col-4">
+
+
+
+                            <table class="regular margin__top-xs bkg__lightgray">
+                                <tr>
+                                    <td colspan="3" class="all-petite-caps">Segunda toma</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp
+                                    </td>
+                                    <td>Sistólica 2
+                                        <p class="mandatory"><span id='systolic_2_msg'
+                                                data-type="tension-msg"><small>Campo
+                                                    obligatorio.</small></span>&nbsp;</p>
+                                    </td>
+
+                                    <td><input type="number" id="systolic_2" name="systolic_2" min="0" max="200"
+                                            autocomplete="off" data-type="hypertension">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+
+                                <tr>
+                                    <td>&nbsp;
+                                    </td>
+                                    <td>Diastólica 2
+                                        <p class="mandatory"><span id='diastolic_2_msg'
+                                                data-type="tension-msg"><small>Campo
+                                                    obligatorio.</small></span>&nbsp;</p>
+                                    </td>
+
+                                    <td><input type="number" id="diastolic_2" name="diastolic_2" min="0" max="200"
+                                            autocomplete="off" data-type="hypertension">
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="col-4">
+
+
+
+                            <table class="regular margin__top-xs">
+                                <td colspan="3" class="all-petite-caps">Resumen</td>
+                                <tr>
+                                    <td>&nbsp
+                                    </td>
+                                    <td>Sistólica
+                                        <p>&nbsp;</p>
+                                    </td>
+
+                                    <td><input class='bold' type="text" id="systolic" name="systolic" autocomplete="off"
+                                            data-type="hypertension" readonly>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <p class="mandatory"><small id='hypertension_msg'>&nbsp;</small>&nbsp;</p>
+                                    </td>
+                                    <td>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;
+                                    </td>
+                                    <td>Diastólica
+                                        <p>&nbsp;</p>
+                                    </td>
+
+                                    <td><input class='bold' type="text" id="diastolic" name="diastolic"
+                                            autocomplete="off" data-type="hypertension" readonly>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-3-plus">
+                        <p class="form-title">Colesterol total</p>
+                        <small>Miligramos por decilitro (mg/dL)</small>
+                        <p class="mandatory"><span id='cholesterol_msg'><small>Campo
+                                    obligatorio.</small></span>&nbsp;</p>
+
+                        <div class="col-12">
+
+
+
+
+                            <ul class="vertical">
+                                <li><input type="radio" id="cho0" name="cholesterol" value="cho0" autocomplete="off">
+                                    <label for="cho0">Hasta
+                                        240</label>
+                                </li>
+                                <li><input type="radio" id="cho1" name="cholesterol" value="cho1" autocomplete="off">
+                                    <label for="cho1">De 241 a
+                                        270</label>
+                                </li>
+                                <li><input type="radio" id="cho2" name="cholesterol" value="cho2" autocomplete="off">
+                                    <label for="cho2">De 271 a
+                                        300</label>
+                                </li>
+                                <li><input type="radio" id="cho3" name="cholesterol" value="cho3" autocomplete="off">
+                                    <label for="cho3">De 301 a
+                                        375</label>
+                                </li>
+                                <li><input type="radio" id="cho4" name="cholesterol" value="cho4" autocomplete="off">
+                                    <label for="cho4">De 376 a
+                                        450</label>
+                                </li>
+                                <li><input type="radio" id="cho5" name="cholesterol" value="cho5" autocomplete="off">
+                                    <label for="cho5">Más de
+                                        450</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="hr">
+
+                <div class="row send margin__top-m">
+                    <div class="col-4">
+                        <!--    <input id="pdf_button" type="button" name='pdf_button' value="escoja" autocomplete="off"
+              onClick="window.open('http://davinci.nacionalre.es/pdfs/cuesdiab.pdf');"> -->
+                    </div>
+                    <div class="col-4">
+                        <input id="reset_button" type="reset" name='reset_button' value="Restaurar" autocomplete="off">
+                    </div>
+                    <div class="col-4">
+                        <input id="submit_button" type="submit" name='submit_button' value="Tarificación"
+                            autocomplete="off">
+                    </div>
+
+                </div><!-- row -->
+
+            </form>
+        </div> <!-- CONTAINER -->
+
+
+
+
+        <!-- The Modal warning message -->
+        <div id="modal_window" class="modal-window">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close" id="close_modal_info">&times;</span>
+                    <h2 id="modal_header_span">Atención</h2>
+                </div>
+                <div class="modal-body">
+                    <p> <strong><span id="modal_body1_span">Patología</span></strong></p>
+                    <p> <span id="modal_body2_span">Patología</span></p>
+                </div>
+                <div class="modal-footer">
+                    <p><small id="modal_footer_span">©NacionalRe. Todos los derechos reservados.</small></p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- The Modal RESULTL -->
+        <div id="modal_result" class="modal-window">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close" id='close_modal_result'>&times;</span>
+                    <h2 id="modal_header_span">Resultados</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="container modal">
+                        <div class="row">
+                            <div class="col-12">
+                                <p class="selection small">Consulta realizada el <span id="result_today"></span></p>
+                                <p class="small"><span id="result_vars_constitution">
+                                        <!-- Hombre | 11/01/1965 | 56 años | 75kg | 180 cm | 24,6 imc  -->
+                                    </span></p>
+                                <p class="small"><span id="result_vars_medical">
+                                        <!-- Diabetes tipo 1: 5 años | 80 sistólica
+                                        | 145 diastólica | Más de 25 insulina | De 7,0 a 7,5 hemoglobina | Más de 300
+                                        colesterol -->
+                                    </span>
+                                </p>
+                                <p class="small"><span id="result_vars_drugs">
+                                        <!-- 1 cerveza | 1 vino | 1 licor | 14 cigarrillos | 2 puros | 1 pipa -->
+                                    </span>
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="container modal">
+                        <div class="row">
+                            <div class="col-3">
+
+                                <div class="result-icon life">
+                                </div>
+                                <h3 class="result">Vida</h3>
+                                <p class="big-number"><span id='result_insurance_life'>&nbsp;</span></p>
+                                <div id="result_table_life"></div>
+                                <!-- 
+                                <table class='result-table' style="width:100%">
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Diabetes (años)</td>
+                                        <td>+100</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Diabetes (edad)</td>
+                                        <td>Rechazar</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>IMC</td>
+                                        <td>+25%</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Tensión</td>
+                                        <td>+0%</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Hemoglobina</td>
+                                        <td>+125%</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Insulina</td>
+                                        <td>+125%</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Colesterol</td>
+                                        <td>+125%</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Tabaco</td>
+                                        <td>+125%</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Alcohol</td>
+                                        <td>+125%</td>
+
+                                    </tr>
+                                </table> -->
+
+
+                            </div>
+                            <div class="col-3">
+                                <div class="result-icon disability">
+                                </div>
+                                <h3 class="result">Invalidez</h3>
+                                <p class="big-number"><span id='result_insurance_disability'>&nbsp;</span></p>
+                                <div id="result_table_disability"></div>
+
+                            </div>
+                            <div class="col-3">
+                                <div class="result-icon accident">
+                                </div>
+                                <h3 class="result">Accidentes</h3>
+                                <p class="big-number"><span id='result_insurance_accident'>&nbsp;</span></p>
+                                <div id="result_table_accident"></div>
+                            </div>
+                            <div class="col-3">
+                                <div class="result-icon illness">
+                                </div>
+                                <h3 class="result">Enfermedad grave</h3>
+                                <p class="big-number"><span id='result_insurance_illness'>&nbsp;</span></p>
+                                <div id="result_table_illness"></div>
+                            </div>
+
+
+                            <div class="col-3">
+                                <div class="result-icon ilt"></div>
+                                <h3 class="result">I.L.T.</h3>
+                                <p class="big-number"><span id='result_insurance_ilt'>&nbsp;</span></p>
+                                <div id="result_table_ilt"></div>
+                            </div>
+                        </div>
+                        <div class="modal-print">
+                            <button onclick="window.print()">Imprimir</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <p><small><span id="result_year"></span>©NacionalRe. Todos los derechos reservados.</small></p>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+
+</body>
+
+</html>
