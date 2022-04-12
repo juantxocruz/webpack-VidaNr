@@ -217,7 +217,7 @@ function getTableResult(data, $insurance, key) {
     table += ' </tr>';
 
     table += '<tr>';
-    table += '<td>Recargo</td>';
+    table += '<td>Cúmulo</td>';
     table += ' <td>' + getSurcharge(data, $insurance, key) + '</td>';
     table += ' </tr>';
 
@@ -305,12 +305,12 @@ export function openModalResults(event, _vars, $results, $insurance, $inMax, _li
     let table_ilt = getTableResult($results, $insurance, 'ilt');
 
     // table life expectancy
-    let result_vars_charge = self.getElementById('result_vars_charge');
+    //let result_vars_charge = self.getElementById('result_vars_charge');
     let result_charge_table = self.getElementById('result_charge_table');
     let charge = $insurance.life + '%';
     let lifeExpectancyTable = drawLifeExpectancyTable(_lifeExpectancy);
 
-    result_vars_charge.innerHTML = "+" + charge;
+    //result_vars_charge.innerHTML = "+" + charge;
     result_charge_table.innerHTML = lifeExpectancyTable;
 
 
