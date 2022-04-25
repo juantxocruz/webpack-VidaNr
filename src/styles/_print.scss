@@ -65,8 +65,8 @@
     font-size: 18px;
   }
   .modal-window .result-icon {
-    width: 120px;
-    height: 120px;
+    width: 112px;
+    height: 112px;
     margin: 0 auto;
     text-align: center;
     background-color: transparent;
@@ -86,6 +86,9 @@
     }
     &.ilt {
       content: url(../img/SVG/ilt.svg);
+    }
+    &.illness {
+      content: url(../img/SVG/illness.svg);
     }
   }
 

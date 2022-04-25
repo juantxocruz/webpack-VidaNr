@@ -188,10 +188,13 @@ function getTableResult(data, $insurance, key) {
     table += '<table class="result-table" style="width:100%">';
     table += '<tr><th </th><th></th></tr>';
 
-
-
     table += '<tr>';
-    table += '<td>IMC</td>';
+
+    if (key === 'accident') {
+        table += '<td>IMC*</td>';
+    } else {
+        table += '<td>IMC</td>';
+    }
     table += ' <td>' + getPartialResult(data.imc[key]) + '</td>';
     table += ' </tr>';
 
@@ -239,7 +242,7 @@ function drawLifeExpectancyTable(_expectancy) {
     table += '<table class="table charge-table" style="width:100%">';
     table += '<thead>';
     table += '<tr><th></th>';
-    table += '<th>PASEMF</th>';
+    table += '<th>PASEMF 2010</th>';
     table += '<th>' + getGkTableName(_expectancy.gk95.gender) + '<br></th>';
     // table += '<th>GKM95<br></th>';
     table += '</tr>';
@@ -272,9 +275,13 @@ export function openModalResults(event, _vars, $results, $insurance, $inMax, _li
     event.stopPropagation();
 
     // vars
-    let newDate = new Date(_vars.today);
+
+    const options = { timeZone: 'Europe/Paris', timeZoneName: 'short' };
+    const stringtime = (new Date().toLocaleTimeString("es-ES", options)).split(":");
+
+    let newDate = new Date();
     let year = newDate.getFullYear();
-    let today = newDate.getDate() + '/' + (newDate.getMonth() + 1) + '/' + newDate.getFullYear() + ' a las ' + (newDate.getUTCHours() + 1) + ':' + newDate.getUTCMinutes() + 'h.';
+    let today = newDate.getDate() + '/' + (newDate.getMonth() + 1) + '/' + newDate.getFullYear() + ' a las ' + stringtime[0] + ':' + stringtime[1] + 'h.';
     let gender = getDictionaryWord(_vars.gender)[0].value;
     let bornDate = new Date(_vars.date);
     let date = bornDate.getDate() + '/' + (bornDate.getMonth() + 1) + '/' + bornDate.getFullYear() + '';

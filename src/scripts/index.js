@@ -690,9 +690,10 @@ function checkModals(e, result) {
   if (result.imc.life === -2) {
     openModalWindow(e, imcPostponeSetup);
   }
-  if (result.imc.life === -1) {
+  if (result.imc.life === -1 || result.imc.ilt === 999) {
     openModalWindow(e, imcRefuseSetup);
   }
+
   return false;
 
 }
