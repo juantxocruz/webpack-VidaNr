@@ -676,7 +676,7 @@ function initForm() {
 
 function resultOn(result) {
   // result.alcohol.life === 999 || result.alcohol.ilt === 999 || 
-  if (result.tension === -1 || result.imc.life === -1 || result.imc.life === -2 || result.imc.ilt === 999) {
+  if (result.tension === -1 || result.imc.life === -1 || result.imc.life === -2) { //|| result.imc.ilt === 999
     return false;
   }
   return true;
@@ -690,7 +690,7 @@ function checkModals(e, result) {
   if (result.imc.life === -2) {
     openModalWindow(e, imcPostponeSetup);
   }
-  if (result.imc.life === -1 || result.imc.ilt === 999) {
+  if (result.imc.life === -1) { // || result.imc.ilt === 999
     openModalWindow(e, imcRefuseSetup);
   }
 
