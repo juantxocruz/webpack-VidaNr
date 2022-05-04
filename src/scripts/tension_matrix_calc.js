@@ -98,31 +98,31 @@ function getDiastolicGroup(diasto) {
 }
 
 function getSystolicGroup(systo) {
-    if (systo <= 90) {
+    if (systo < 90) {
         return 'c1';
     }
-    if (systo > 90 && systo <= 140) {
+    if (systo >= 90 && systo < 140) {
         return 'c2';
     }
-    if (systo > 140 && systo <= 146) {
+    if (systo >= 140 && systo < 146) {
         return 'c3';
     }
-    if (systo > 146 && systo <= 150) {
+    if (systo >= 146 && systo < 150) {
         return 'c4';
     }
-    if (systo > 150 && systo <= 156) {
+    if (systo >= 150 && systo < 156) {
         return 'c5';
     }
-    if (systo > 156 && systo <= 161) {
+    if (systo >= 156 && systo < 161) {
         return 'c6';
     }
-    if (systo > 161 && systo <= 166) {
+    if (systo >= 161 && systo < 166) {
         return 'c7';
     }
-    if (systo > 166 && systo <= 171) {
+    if (systo >= 166 && systo < 171) {
         return 'c8';
     }
-    if (systo > 171) {
+    if (systo >= 171) {
         return 'c9';
     }
 
