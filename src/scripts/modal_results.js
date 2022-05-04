@@ -163,11 +163,17 @@ function getInsurance(data, key) {
 }
 
 function getSurcharge(data, insurance, key) {
+    let sum = 0;
 
     if (insurance[key] > 999) {
         return '<span class="red">Rechazar</span>';
     } else {
-        let sum = data.alcohol[key] + data.cholesterol + data.imc[key] + data.tension + data.tobacco[key];
+        if (key === 'accident') {
+            sum = data.alcohol[key] + data.cholesterol + data.imc[key] / 2 + data.tension + data.tobacco[key];
+        } else {
+            sum = data.alcohol[key] + data.cholesterol + data.imc[key] + data.tension + data.tobacco[key];
+        }
+
 
         if (sum > insurance[key]) {
             return '<span class="green">' + (insurance[key] - sum) + '%</span>';
@@ -191,11 +197,13 @@ function getTableResult(data, $insurance, key) {
     table += '<tr>';
 
     if (key === 'accident') {
-        table += '<td>IMC*</td>';
+        table += '<td>IMC</td>';
+        table += ' <td>' + getPartialResult(data.imc[key] / 2) + '</td>';
     } else {
         table += '<td>IMC</td>';
+        table += ' <td>' + getPartialResult(data.imc[key]) + '</td>';
     }
-    table += ' <td>' + getPartialResult(data.imc[key]) + '</td>';
+    //table += ' <td>' + getPartialResult(data.imc[key]) + '</td>';
     table += ' </tr>';
 
     table += '<tr>';
