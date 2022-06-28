@@ -83,6 +83,7 @@ let birthdayModalSetup = {
 const dateRange = [13, 69];
 const minHeight = 120;
 const minWeight = 32;
+
 const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 const systolicRange = [75, 200];
 const diastolicRange = [45, 124];
@@ -542,6 +543,7 @@ function initNumericField(name) {
 
           modalSetup.content = getDictionaryWord("weightModalSetup_1_content") + " " + (minWeight) + " " + getDictionaryWord("weightModalSetup_2_content") + '.';
           modalSetup.action = getDictionaryWord("weightModalSetup_action");
+          modalSetup.footer= getDictionaryWord("modalSetup_footer")
   
 
           if (_weight !== '') {
