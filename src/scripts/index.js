@@ -9,7 +9,8 @@ import {
   dateIsOnRange,
   isNumberKey,
   limitChars,
-  cmToMeter
+  cmToMeter,
+  toDateString
 } from './helpers';
 
 import { calcAlcohol } from './alcohol_calc';
@@ -72,13 +73,11 @@ let $diastolic = formForm.elements['diastolic'];
 
 
 let birthdayModalSetup = {
-  header: "Fecha incorrecta",
-  content: "La fecha seleccionada no puede ser mayor que la fecha actual.",
-  action: "Por favor, escoja una fecha de nuevo",
-  footer: "© NacionalRe. Todos los derechos reservados."
+  header: getDictionaryWord("birthdayModalSetup_header"),
+  content: getDictionaryWord("birthdayModalSetup_content"),
+  action: getDictionaryWord("birthdayModalSetup_action"),
+  footer: getDictionaryWord("modalSetup_footer")
 }
-
-
 
 
 const dateRange = [13, 69];
@@ -91,43 +90,47 @@ const diastolicRange = [45, 124];
 
 
 let dateRangeModalSetup = {
-  header: "Atención: Fecha fuera de rango",
-  content: "Por favor, escoja una fecha en el rango (entre " + dateRange[0] + " y " + dateRange[1] + " años de edad).",
-  action: "La fecha seleccionada debe estar entre el " + subtractYearsToDate(new Date(), dateRange[1]).toLocaleDateString('es-ES', dateOptions) + " y el " + subtractYearsToDate(new Date(), dateRange[0]).toLocaleDateString('es-ES', dateOptions) + ".",
-  footer: "© NacionalRe"
+  header:  getDictionaryWord("dateRangeModalSetup_header"),
+  content: getDictionaryWord("dateRangeModalSetup_content_1") + " " + dateRange[0] + " " + getDictionaryWord("dateRangeModalSetup_content_2") + " " +  dateRange[1]  + " " + getDictionaryWord("dateRangeModalSetup_content_3") + ".",
+  action:  getDictionaryWord("dateRangeModalSetup_action_1") + " " + toDateString(subtractYearsToDate(new Date(), dateRange[1]), idiom, dateOptions) + " " + getDictionaryWord("dateRangeModalSetup_action_2") + " " +  toDateString(subtractYearsToDate(new Date(), dateRange[0]), idiom, dateOptions) + ".",
+  footer: getDictionaryWord("modalSetup_footer")
 }
 
 let fieldsOffModalSetup = {
-  header: "Atención:",
-  content: "Por favor, rellene correctamente los campos con mensajes en rojo.",
-  action: "Existen campos erróneos o sin rellenar.",
-  footer: "© NacionalRe"
+  header: getDictionaryWord("modalSetup_header"),
+  content: getDictionaryWord("fieldsOffModalSetup_content"),
+  action: getDictionaryWord("fieldsOffModalSetup_action"),
+  footer: getDictionaryWord("modalSetup_footer")  
 }
 
 let imcRefuseSetup = {
-  header: "Rechazar:",
-  content: "Debido a la relación peso/altura esta solicitud debe ser rechazada.",
-  action: "Ingrese nuevos datos o rechace la solicitud.",
-  footer: "© NacionalRe"
+  header: getDictionaryWord("imcRefuseSetup_header"),
+  content: getDictionaryWord("imcRefuseSetup_content"),
+  action: getDictionaryWord("imcRefuseSetup_action"),
+  footer: getDictionaryWord("modalSetup_footer")
 }
+
 let imcPostponeSetup = {
-  header: "Aplazar:",
-  content: "Debido a la relación peso/altura esta solicitud debe ser aplazada.",
-  action: "Ingrese nuevos datos o aplace la solicitud.",
-  footer: "© NacionalRe"
+  header: getDictionaryWord("imcPostponeSetup_header"),
+  content: getDictionaryWord("imcPostponeSetup_content"),
+  action: getDictionaryWord("imcPostponeSetup_action"),
+  footer: getDictionaryWord("modalSetup_footer")
 }
+
 let tensionRefuseSetup = {
-  header: "Rechazar:",
-  content: "Debido a la tensión arterial esta solicitud debe ser rechazada.",
-  action: "Ingrese nuevos datos o rechace la solicitud.",
-  footer: "© NacionalRe"
+  header: getDictionaryWord("tensionRefuseSetup_header"),
+  content: getDictionaryWord("tensionRefuseSetup_content"),
+  action: getDictionaryWord("itensionRefuseSetup_action"),
+  footer: getDictionaryWord("modalSetup_footer")
 }
+
 let inMaxRefuseSetup = {
-  header: "Consulte con la central:",
-  content: "Se ha excedido el límite para el cálculo de vida y este supuesto aborta el cálculo de cualquier riesgo.",
-  action: "Ingrese nuevos datos o consulte con la central.",
-  footer: "© NacionalRe"
+  header: getDictionaryWord("inMaxRefuseSetup_header"),
+  content: getDictionaryWord("inMaxRefuseSetup_content"),
+  action: getDictionaryWord("inMaxRefuseSetup_action"),
+  footer: getDictionaryWord("modalSetup_footer")
 }
+
 
 
 
@@ -536,8 +539,10 @@ function initNumericField(name) {
         _weight = e.currentTarget.value; // string 
         parser = !!parseInt(_weight) ? parseInt(_weight) : 0;
         if (parser <= minWeight) {
-          modalSetup.content = 'El peso introducido es muy bajo. Debe introducir un peso mayor de ' + minWeight + ' kilos.';
-          modalSetup.action = "Por favor, asegúrese de que la cifra es correcta."
+
+          modalSetup.content = getDictionaryWord("weightModalSetup_1_content") + " " + (minWeight) + " " + getDictionaryWord("weightModalSetup_2_content") + '.';
+          modalSetup.action = getDictionaryWord("weightModalSetup_action");
+  
 
           if (_weight !== '') {
             openModalWindow(e, modalSetup);
@@ -560,8 +565,10 @@ function initNumericField(name) {
         _height = e.currentTarget.value; // string d
         parser = !!parseInt(_height) ? parseInt(_height) : 0;
         if (parser <= minHeight) {
-          modalSetup.content = 'La altura introducida es muy baja. Debe introducir una altura mayor de ' + minHeight + ' centímetros.';
-          modalSetup.action = "Por favor, asegúrese de que la cifra es correcta."
+
+          modalSetup.content = getDictionaryWord("heightModalSetup_1_content") + " " + (minHeight) + " " + getDictionaryWord("heightModalSetup_2_content") + '.';
+          modalSetup.action = getDictionaryWord("date_is_not_correct");
+
           _height = '';
           e.currentTarget.value = '';
           body_mass.value = '';
@@ -603,15 +610,16 @@ function initNumericField(name) {
         let _systolic = e.currentTarget.value; // string 
 
         if (parseInt(_systolic) > systolicRange[1]) {
-          modalSetup.content = 'La tensión sistólica es muy alta para asegurar el riesgo. Debe introducir una tensión diastólica menor de ' + systolicRange[1] + '.';
-          modalSetup.action = "Por favor, asegúrese de que la cifra es correcta."
+    
+          modalSetup.content = getDictionaryWord("systolicModalSetup_High_content") + ' ' + systolicRange[1] + '.';
+          modalSetup.action = getDictionaryWord("date_is_not_correct");
           openModalWindow(e, modalSetup);
           e.currentTarget.value = '';
         }
 
         if (parseInt(_systolic) < systolicRange[0]) {
-          modalSetup.content = 'La tensión sistólica es muy baja para asegurar el riesgo. Debe introducir una tensión diástolica mayor de ' + systolicRange[0] + '.';
-          modalSetup.action = "Por favor, asegúrese de que la cifra es correcta."
+          modalSetup.content = getDictionaryWord("systolicModalSetup_Low_content") + ' ' + systolicRange[0] + '.';
+          modalSetup.action = getDictionaryWord("date_is_not_correct");
           openModalWindow(e, modalSetup);
           e.currentTarget.value = '';
 
@@ -633,15 +641,16 @@ function initNumericField(name) {
         let _diastolic = e.currentTarget.value; // string
 
         if (parseInt(_diastolic) > diastolicRange[1]) {
-          modalSetup.content = 'La tensión diastólica es muy alta para asegurar el riesgo. Debe introducir una tensión diástolica menor de ' + diastolicRange[1] + '.';
-          modalSetup.action = "Por favor, asegúrese de que la cifra es correcta."
+          modalSetup.content = getDictionaryWord("diastolicModalSetup_High_content") + " " + diastolicRange[1] + '.';
+          modalSetup.action = getDictionaryWord("date_is_not_correct");
+
           openModalWindow(e, modalSetup);
           e.currentTarget.value = '';
 
         }
         if (parseInt(_diastolic) < diastolicRange[0]) {
-          modalSetup.content = 'La tensión diastólica es muy baja para asegurar el riesgo. Debe introducir una tensión diástolica mayor de ' + diastolicRange[0] + '.';
-          modalSetup.action = "Por favor, asegúrese de que la cifra es correcta."
+          modalSetup.content = getDictionaryWord("diastolicModalSetup_Low_content") + " " + diastolicRange[0] + '.';
+          modalSetup.action = getDictionaryWord("date_is_not_correct");
           openModalWindow(e, modalSetup);
           e.currentTarget.value = '';
 
@@ -784,9 +793,10 @@ function initSubmit() {
 
     } else {
       if (fields && fields["length"] === 1 && fields[0].type === 'isCompensatedTension') {
-        modalSetup.header = 'Tarificación cancelada.';
-        modalSetup.content = 'La diferencia entre la tensión sistólica y la tensión diástolica es menor de 20 y, por tanto, está muy descompensada.';
-        modalSetup.action = "Por favor, asegúrese de que la cifra es correcta para poder realizar la tarificación.";
+
+        modalSetup.header =  getDictionaryWord("compensatedTensionModal_header");
+        modalSetup.content =  getDictionaryWord("compensatedTensionModal_content");
+        modalSetup.action =  getDictionaryWord("compensatedTensionModal_action");
         openModalWindow(e, modalSetup);
         return false;
 

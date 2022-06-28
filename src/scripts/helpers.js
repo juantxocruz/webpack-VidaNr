@@ -1,7 +1,13 @@
 
 var version = "1.0.0";
 
+export function toDateString(date, lang, dateOptions) {
 
+  let l = lang === 'ES' ? "es-ES" : "en";
+
+
+  return lang === 'ES' ? date.toLocaleDateString(l, dateOptions) : date.toDateString(l, dateOptions);
+}
 
 export function addEventListenerList(nodelist, event, fn) {
   let e = event || window.event;
