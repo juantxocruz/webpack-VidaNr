@@ -1,8 +1,10 @@
+import { idiom } from './index';
 
 let self = document;
 
 let modal_result = self.getElementById("modal_result");
 let close_modal_result = self.getElementById("close_modal_result");
+let life_expectancy_container = self.getElementById("life_expectancy_container");
 
 
 
@@ -279,9 +281,10 @@ function drawLifeExpectancyTable(_expectancy) {
 
 
 
-export function openModalResults(event, _vars, $results, $insurance, $inMax, _lifeExpectancy) {
+export function openModalResults(event, _vars, $results, $insurance, _lifeExpectancy) {
     event.stopPropagation();
 
+    let x = idiom;
     // vars
 
     const options = { timeZone: 'Europe/Paris', timeZoneName: 'short' };
@@ -323,12 +326,17 @@ export function openModalResults(event, _vars, $results, $insurance, $inMax, _li
     //let result_vars_charge = self.getElementById('result_vars_charge');
     let result_charge_table = self.getElementById('result_charge_table');
     let charge = $insurance.life + '%';
-    let lifeExpectancyTable = drawLifeExpectancyTable(_lifeExpectancy);
 
-    //result_vars_charge.innerHTML = "+" + charge;
-    result_charge_table.innerHTML = lifeExpectancyTable;
-
-
+    /* Live Expectancy only in Spanish */
+    if(idiom === "ES"){
+        let lifeExpectancyTable = drawLifeExpectancyTable(_lifeExpectancy);
+        result_charge_table.innerHTML = lifeExpectancyTable;
+    }
+    if(idiom !== 'ES'){
+        life_expectancy_container.style.display = "none";
+    }
+   
+    
     // print
     // tables vidaNR
     result_today.innerHTML = today;

@@ -10,6 +10,25 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
 
+  <script type="application/javascript">
+    // set html language
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const lang = urlParams.get('lang').toLowerCase();
+    const htmlLang = lang === 'es' ? 'es' : 'en';
+    let navigatorLang = navigator.language || navigator.userLanguage;
+
+
+    document.documentElement.lang = htmlLang;
+    document.documentElement.setAttribute("lang", htmlLang);
+
+    console.log('lang-->', document.documentElement.lang, document.documentElement.getAttribute('lang'), navigatorLang);
+    let x;
+
+
+  </script>
+
 </head>
 
 <body>
@@ -22,27 +41,27 @@
           <div class="col-6">
             <div class="row">
               <div class="col-6">
-                <p class="form-title">Género</p>
-                <p class="mandatory"><span id='gender_msg'><small>Campo
+                <p class="form-title" id="gender_upper">Género</p>
+                <p class="mandatory"><span id='gender_msg'><small id="mandatory_text_1">Campo
                       obligatorio.</small></span>&nbsp;</p>
 
                 <ul class="vertical">
                   <li><input type="radio" id="male" name="gender" value="male" autocomplete="off">
-                    <label for="male">Hombre</label>
+                    <label for="male" id="male_upper">Hombre</label>
                   </li>
                   <li><input type="radio" id="female" name="gender" value="female" autocomplete="off">
-                    <label for="female">Mujer</label>
+                    <label for="female" id="female_upper">Mujer</label>
                   </li>
                 </ul>
               </div>
               <div class="col-6">
-                <p class="form-title">Fecha nacimiento</p>
+                <p class="form-title" id="birth_date">Fecha nacimiento</p>
                 <p class="numeric"><small><label for="years_diabetes">&nbsp;</label></small>
                 </p>
 
                 <input class="margin__top-s row numeric" type="date" id="birthday" name="birthday" value=""
                   autocomplete="off">
-                <p class="mandatory"><span id='birthday_msg'><small>Fecha
+                <p class="mandatory"><span id='birthday_msg'><small id="mandatory_date_1">Fecha
                       obligatoria.</small></span>&nbsp;</p>
 
 
@@ -94,23 +113,22 @@
 
         <div class="row">
           <div class="col-4">
-            <p class="form-title">Constitución</p>
+            <p class="form-title" id="constitution">Constitución</p>
             <small>&nbsp;</small>
             <table class="regular margin__top-xs">
               <tr>
-                <td>Peso (kg)
-                  <p class="mandatory"><span id='weight_msg'><small>Campo
+                <td><span id="weight_measure">Peso (kg)</span>
+                  <p class="mandatory"><span id="weight_msg"><small id="mandatory_text_2">Campo
                         obligatorio.</small></span>&nbsp;</p>
-
                 </td>
                 <td><input type="number" id="weight" name="weight" maxlength="3" min="0" max="600" autocomplete="off">
                 </td>
 
               </tr>
               <tr>
-                <td>Altura (cm)
+                <td>  <span id="height_measure">Altura (cm)</span>
 
-                  <p class="mandatory"><span id='height_msg'><small>Campo
+                  <p class="mandatory"><span id='height_msg'><small id="mandatory_text_3">Campo
                         obligatorio.</small></span>&nbsp;</p>
 
                 </td>
@@ -119,10 +137,10 @@
 
               </tr>
               <tr>
-                <td>Índice Masa
-
-                  <p class="mandatory"><span id='body_mass_msg'><small>Campo
-                        obligatorio.</small></span>&nbsp;</p>
+                <td> <span id='mass_index'>Índice Masa</span>
+<!-- 
+                  <p class="mandatory"><span id="body_mass_msg"><small id="mandatory_text_4">Campo
+                        obligatorio.</small></span>&nbsp;</p> -->
 
                 </td>
                 <td><input class='bold' type="text" id="body_mass" name="body_mass" min="0" max="50" autocomplete="off"
@@ -133,12 +151,12 @@
 
           </div>
           <div class="col-4">
-            <p class="form-title">Tabaco</p>
-            <small>Consumo diario</small>
+            <p class="form-title" id="tobacco_upper">Tabaco</p>
+            <small id="tobacco_daily_consumption">Consumo diario</small>
             <table class="regular margin__top-xs">
               <tr>
-                <td>Cigarrillos
-                  <p class="mandatory"><span id='cigarettes_msg'><small>Campo
+                <td> <span id="cigarettes_upper">Cigarrillos</span>
+                  <p class="mandatory"><span id="cigarettes_msg"><small id="mandatory_text_5">Campo
                         obligatorio.</small></span>&nbsp;</p>
 
                 </td>
@@ -147,9 +165,9 @@
 
               </tr>
               <tr>
-                <td>Puros
+                <td><span id="cigars_upper">Puros</span>
 
-                  <p class="mandatory"><span id='cigars_msg'><small>Campo
+                  <p class="mandatory"><span id='cigars_msg'><small id="mandatory_text_6">Campo
                         obligatorio.</small></span>&nbsp;</p>
 
                 </td>
@@ -158,8 +176,8 @@
 
               </tr>
               <tr>
-                <td>Pipa
-                  <p class="mandatory"><span id='pipes_msg'><small>Campo
+                <td> <span id="pipes_upper">Pipa</span>
+                  <p class="mandatory"><span id='pipes_msg'><small id="mandatory_text_7">Campo
                         obligatorio.</small></span>&nbsp;</p>
 
                 </td>
@@ -171,13 +189,13 @@
 
           </div>
           <div class="col-4">
-            <p class="form-title">Alcohol</p>
-            <small>Consumo diario</small>
+            <p class="form-title" id="alcohol_upper">Alcohol</p>
+            <small id="alcohol_daily_consumption">Consumo diario</small>
             <table class="regular margin__top-xs">
               <tr>
-                <td>Vinos
+                <td> <span id="wines_upper">Vinos</span>
 
-                  <p class="mandatory"><span id='wines_msg'><small>Campo
+                  <p class="mandatory"><span id='wines_msg'><small id="mandatory_text_8">Campo
                         obligatorio.</small></span>&nbsp;</p>
 
                 </td>
@@ -186,9 +204,9 @@
 
               </tr>
               <tr>
-                <td>Cervezas
+                <td> <span id="beers_upper">Cervezas</span>
 
-                  <p class="mandatory"><span id='beers_msg'><small>Campo
+                  <p class="mandatory"><span id='beers_msg'><small id="mandatory_text_9">Campo
                         obligatorio.</small></span>&nbsp;</p>
 
                 </td>
@@ -197,8 +215,8 @@
 
               </tr>
               <tr>
-                <td>Licores
-                  <p class="mandatory"><span id='spirits_msg'><small>Campo
+                <td> <span id="liqueurs_upper">Licores</span>
+                  <p class="mandatory"><span id='spirits_msg'><small id="mandatory_text_10">Campo
                         obligatorio.</small></span>&nbsp;</p>
 
                 </td>
@@ -215,20 +233,20 @@
         <hr class="hr">
         <div class="row">
           <div class="col-9">
-            <p class="form-title">Tensión arterial</p>
-            <p><small>Presión arterial (mm Hg.). Teclee al menos una toma.</small></p>
+            <p class="form-title" id="blood_pressure_upper">Tensión arterial</p>
+            <p><small id="blood_pressure_intro">Presión arterial (mm Hg). Teclee al menos una toma.</small></p>
             <div class="col-4">
 
 
               <table class="regular margin__top-xs">
                 <tr>
-                  <td colspan="3" class="all-petite-caps">Primera toma </td>
+                  <td colspan="3" class="all-petite-caps" id="first_take">Primera toma </td>
                 </tr>
                 <tr>
                   <td>&nbsp
                   </td>
-                  <td>Sistólica 1
-                    <p class="mandatory"><span id='systolic_1_msg' data-type="tension-msg"><small>Campo
+                  <td><span id="systolic_one_upper">Sistólica 1</span>
+                    <p class="mandatory"><span id='systolic_1_msg' data-type="tension-msg"><small id="mandatory_text_11">Campo
                           obligatorio.</small></span>&nbsp;</p>
                   </td>
 
@@ -245,8 +263,8 @@
                 <tr>
                   <td>&nbsp;
                   </td>
-                  <td>Diastólica 1
-                    <p class="mandatory"><span id='diastolic_1_msg' data-type="tension-msg"><small>Campo
+                  <td><span id="diastolic_one_upper">Diastólica 1</span>
+                    <p class="mandatory"><span id='diastolic_1_msg' data-type="tension-msg"><small id="mandatory_text_12">Campo
                           obligatorio.</small></span>&nbsp;</p>
                   </td>
 
@@ -271,13 +289,13 @@
 
               <table class="regular margin__top-xs bkg__lightgray">
                 <tr>
-                  <td colspan="3" class="all-petite-caps">Segunda toma</td>
+                  <td colspan="3" class="all-petite-caps"  id="second_take">Segunda toma</td>
                 </tr>
                 <tr>
                   <td>&nbsp
                   </td>
-                  <td>Sistólica 2
-                    <p class="mandatory"><span id='systolic_2_msg' data-type="tension-msg"><small>Campo
+                  <td><span id="systolic_two_upper">Sistólica 2</span>
+                    <p class="mandatory"><span id='systolic_2_msg' data-type="tension-msg"><small id="mandatory_text_13">Campo
                           obligatorio.</small></span>&nbsp;</p>
                   </td>
 
@@ -294,8 +312,8 @@
                 <tr>
                   <td>&nbsp;
                   </td>
-                  <td>Diastólica 2
-                    <p class="mandatory"><span id='diastolic_2_msg' data-type="tension-msg"><small>Campo
+                  <td> <span id="diastolic_two_upper">Diastólica 2</span>
+                    <p class="mandatory"><span id='diastolic_2_msg' data-type="tension-msg"><small id="mandatory_text_14">Campo
                           obligatorio.</small></span>&nbsp;</p>
                   </td>
 
@@ -317,11 +335,11 @@
 
 
               <table class="regular margin__top-xs">
-                <td colspan="3" class="all-petite-caps">Resumen</td>
+                <td colspan="3" class="all-petite-caps" id="abstract_upper">Resumen</td>
                 <tr>
                   <td>&nbsp
                   </td>
-                  <td>Sistólica
+                  <td id="systolic_zero_upper">Sistólica
                     <p>&nbsp;</p>
                   </td>
 
@@ -342,7 +360,7 @@
                 <tr>
                   <td>&nbsp;
                   </td>
-                  <td>Diastólica
+                  <td id="diastolic_zero_upper">Diastólica
                     <p>&nbsp;</p>
                   </td>
 
@@ -361,9 +379,9 @@
             </div>
           </div>
           <div class="col-3-plus">
-            <p class="form-title">Colesterol total</p>
-            <small>Miligramos por decilitro (mg/dL)</small>
-            <p class="mandatory"><span id='cholesterol_msg'><small>Campo
+            <p class="form-title" id="cholesterol_total_upper">Colesterol total</p>
+            <small id="cholesterol_total_intro">Miligramos por decilitro (mg/dL)</small>
+            <p class="mandatory"><span id='cholesterol_msg'><small id="mandatory_text_15">Campo
                   obligatorio.</small></span>&nbsp;</p>
 
             <div class="col-12">
@@ -373,28 +391,23 @@
 
               <ul class="vertical">
                 <li><input type="radio" id="cho0" name="cholesterol" value="cho0" autocomplete="off">
-                  <label for="cho0">Hasta
+                  <label for="cho0"  id="label_cho0">Hasta
                     240</label>
                 </li>
                 <li><input type="radio" id="cho1" name="cholesterol" value="cho1" autocomplete="off">
-                  <label for="cho1">De 241 a
-                    270</label>
+                  <label for="cho1"  id="label_cho1">De 241 a 270</label>
                 </li>
                 <li><input type="radio" id="cho2" name="cholesterol" value="cho2" autocomplete="off">
-                  <label for="cho2">De 271 a
-                    300</label>
+                  <label for="cho2"  id="label_cho2">De 271 a 300</label>
                 </li>
                 <li><input type="radio" id="cho3" name="cholesterol" value="cho3" autocomplete="off">
-                  <label for="cho3">De 301 a
-                    375</label>
+                  <label for="cho3"  id="label_cho3">De 301 a 375</label>
                 </li>
                 <li><input type="radio" id="cho4" name="cholesterol" value="cho4" autocomplete="off">
-                  <label for="cho4">De 376 a
-                    450</label>
+                  <label for="cho4" id="label_cho4">De 376 a 450</label>
                 </li>
                 <li><input type="radio" id="cho5" name="cholesterol" value="cho5" autocomplete="off">
-                  <label for="cho5">Más de
-                    450</label>
+                  <label for="cho5" id="label_cho5">Más de 450</label>
                 </li>
               </ul>
             </div>
@@ -580,6 +593,7 @@
               <!--        <small>(*): Para el IMC de accidentes, se aplicará la mitad del recargo que en vida.</small> -->
             </div>
 
+            <div id="life_expectancy_container">
             <div class="row">
 
               <div class="col-9 margin__top-s">
@@ -597,6 +611,8 @@
               </div>
 
             </div>
+          </div>
+
 
 
             <div class="modal-print">

@@ -36,11 +36,24 @@ import { calcTobacco } from './tobacco_calc';
 import { calcImc, setImcColor } from './imc_calc';
 import { calculateLifeExpectancy } from './lifeExpectancyCalc';
 
+import { getDictionaryWord, setFormDictionary } from './dictionary';
+
+
 if (process.env.NODE_ENV === 'development') {
   require('../index.html');
 }
 
+/* get lang from URL */
+export let idiom = getLang(); // ES OR EN
 
+
+function getLang() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const lang = urlParams.get('lang');
+
+    return lang ? lang.toUpperCase() : 'ES';
+}
 
 
 
@@ -295,6 +308,8 @@ function checkNodeFields(nodeList) {
     }
 
     if ((nodeList[i].type === "date" || nodeList[i].type === "number") && nodeList[i].value === "" && nodeList[i].dataset.type !== 'hypertension') {
+      let st = nodeList[i].name + "_msg";
+      let demo = document.getElementById(nodeList[i].name + "_msg");
       document.getElementById(nodeList[i].name + "_msg").style.display = "block";
     }
   }
@@ -765,7 +780,7 @@ function initSubmit() {
 
       });
       // OPEN results
-      openModalResults(e, _formInputs, $result, $insurance, $inMax, _lifeExpectancy);
+      openModalResults(e, _formInputs, $result, $insurance, _lifeExpectancy);
 
     } else {
       if (fields && fields["length"] === 1 && fields[0].type === 'isCompensatedTension') {
@@ -820,6 +835,7 @@ let init = () => {
   initSubmit();
   initReset();
   disableEnter();
+  setFormDictionary();
 
 
 
