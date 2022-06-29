@@ -76,7 +76,7 @@ let birthdayModalSetup = {
   header: getDictionaryWord("birthdayModalSetup_header"),
   content: getDictionaryWord("birthdayModalSetup_content"),
   action: getDictionaryWord("birthdayModalSetup_action"),
-  footer: getDictionaryWord("modalSetup_footer")
+  footer: getDictionaryWord("modal_footer_info")
 }
 
 
@@ -94,42 +94,42 @@ let dateRangeModalSetup = {
   header:  getDictionaryWord("dateRangeModalSetup_header"),
   content: getDictionaryWord("dateRangeModalSetup_content_1") + " " + dateRange[0] + " " + getDictionaryWord("dateRangeModalSetup_content_2") + " " +  dateRange[1]  + " " + getDictionaryWord("dateRangeModalSetup_content_3") + ".",
   action:  getDictionaryWord("dateRangeModalSetup_action_1") + " " + toDateString(subtractYearsToDate(new Date(), dateRange[1]), idiom, dateOptions) + " " + getDictionaryWord("dateRangeModalSetup_action_2") + " " +  toDateString(subtractYearsToDate(new Date(), dateRange[0]), idiom, dateOptions) + ".",
-  footer: getDictionaryWord("modalSetup_footer")
+  footer: getDictionaryWord("modal_footer_info")
 }
 
 let fieldsOffModalSetup = {
-  header: getDictionaryWord("modalSetup_header"),
+  header: getDictionaryWord("modal_header_info"),
   content: getDictionaryWord("fieldsOffModalSetup_content"),
   action: getDictionaryWord("fieldsOffModalSetup_action"),
-  footer: getDictionaryWord("modalSetup_footer")  
+  footer: getDictionaryWord("modal_footer_info")  
 }
 
 let imcRefuseSetup = {
   header: getDictionaryWord("imcRefuseSetup_header"),
   content: getDictionaryWord("imcRefuseSetup_content"),
   action: getDictionaryWord("imcRefuseSetup_action"),
-  footer: getDictionaryWord("modalSetup_footer")
+  footer: getDictionaryWord("modal_footer_info")
 }
 
 let imcPostponeSetup = {
   header: getDictionaryWord("imcPostponeSetup_header"),
   content: getDictionaryWord("imcPostponeSetup_content"),
   action: getDictionaryWord("imcPostponeSetup_action"),
-  footer: getDictionaryWord("modalSetup_footer")
+  footer: getDictionaryWord("modal_footer_info")
 }
 
 let tensionRefuseSetup = {
   header: getDictionaryWord("tensionRefuseSetup_header"),
   content: getDictionaryWord("tensionRefuseSetup_content"),
   action: getDictionaryWord("itensionRefuseSetup_action"),
-  footer: getDictionaryWord("modalSetup_footer")
+  footer: getDictionaryWord("modal_footer_info")
 }
 
 let inMaxRefuseSetup = {
   header: getDictionaryWord("inMaxRefuseSetup_header"),
   content: getDictionaryWord("inMaxRefuseSetup_content"),
   action: getDictionaryWord("inMaxRefuseSetup_action"),
-  footer: getDictionaryWord("modalSetup_footer")
+  footer: getDictionaryWord("modal_footer_info")
 }
 
 
@@ -540,10 +540,10 @@ function initNumericField(name) {
         _weight = e.currentTarget.value; // string 
         parser = !!parseInt(_weight) ? parseInt(_weight) : 0;
         if (parser <= minWeight) {
-
+          modalSetup.header = getDictionaryWord("modal_header_info");
           modalSetup.content = getDictionaryWord("weightModalSetup_1_content") + " " + (minWeight) + " " + getDictionaryWord("weightModalSetup_2_content") + '.';
           modalSetup.action = getDictionaryWord("weightModalSetup_action");
-          modalSetup.footer= getDictionaryWord("modalSetup_footer")
+          modalSetup.footer= getDictionaryWord("modal_footer_info")
   
 
           if (_weight !== '') {
@@ -567,9 +567,10 @@ function initNumericField(name) {
         _height = e.currentTarget.value; // string d
         parser = !!parseInt(_height) ? parseInt(_height) : 0;
         if (parser <= minHeight) {
-
+          modalSetup.header = getDictionaryWord("modal_header_info");
           modalSetup.content = getDictionaryWord("heightModalSetup_1_content") + " " + (minHeight) + " " + getDictionaryWord("heightModalSetup_2_content") + '.';
           modalSetup.action = getDictionaryWord("date_is_not_correct");
+          modalSetup.footer= getDictionaryWord("modal_footer_info");
 
           _height = '';
           e.currentTarget.value = '';

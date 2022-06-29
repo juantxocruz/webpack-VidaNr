@@ -443,14 +443,14 @@
       <div class="modal-content">
         <div class="modal-header">
           <span class="close" id="close_modal_info">&times;</span>
-          <h2 <span id="warning_attention">Atención</span></h2>
+          <h2 <span id="modal_header_info">Atención</span></h2>
         </div>
         <div class="modal-body">
           <p> <strong><span id="modal_body1_span">Patología</span></strong></p>
           <p> <span id="modal_body2_span">Patología</span></p>
         </div>
         <div class="modal-footer">
-          <p><small><span id="warning_modal_footer">©NacionalRe. Todos los derechos reservados.</span></small></p>
+          <p><small><span id="modal_footer_info">©NacionalRe. Todos los derechos reservados.</span></small></p>
         </div>
       </div>
 
@@ -463,13 +463,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <span class="close" id='close_modal_result'>&times;</span>
-          <h2 id="modal_header_span">Calculadora de recargos de seguros</h2>
+          <h2 id="modal_header_result">Calculadora de recargos de seguros</h2>
         </div>
         <div class="modal-body">
           <div class="container modal">
             <div class="row">
               <div class="col-12">
-                <p class="selection small">Consulta realizada el <span id="result_today"></span></p>
+                <p class="selection small"><span id="h_consult_date">Consulta realizada el</span>&nbsp;<span id="result_today"></span></p>
                 <p class="small"><span id="result_vars_constitution">
                     <!-- Hombre | 11/01/1965 | 56 años | 75kg | 180 cm | 24,6 imc  -->
                   </span></p>
@@ -498,7 +498,7 @@
 
                 <div class="result-icon life">
                 </div>
-                <h3 class="result">Vida</h3>
+                <h3 class="result"><span id="h_life">Vida</span></h3>
                 <p class="big-number"><span id='result_insurance_life'>&nbsp;</span></p>
                 <div id="result_table_life"></div>
                 <!-- 
@@ -560,7 +560,7 @@
               <div class="col-3">
                 <div class="result-icon disability">
                 </div>
-                <h3 class="result">Invalidez</h3>
+                <h3 class="result"><span id="h_disability">Invalidez</span></h3>
                 <p class="big-number"><span id='result_insurance_disability'>&nbsp;</span></p>
                 <div id="result_table_disability"></div>
 
@@ -568,14 +568,14 @@
               <div class="col-3">
                 <div class="result-icon accident">
                 </div>
-                <h3 class="result">Accidentes</h3>
+                <h3 class="result"><span id="h_accidents">Accidentes</span></h3>
                 <p class="big-number"><span id='result_insurance_accident'>&nbsp;</span></p>
                 <div id="result_table_accident"></div>
               </div>
               <div class="col-3">
                 <div class="result-icon illness">
                 </div>
-                <h3 class="result">Enfermedad grave</h3>
+                <h3 class="result"><span id="h_illness">Enfermedad grave</span></h3>
                 <p class="big-number"><span id='result_insurance_illness'>&nbsp;</span></p>
                 <div id="result_table_illness"></div>
               </div>
@@ -583,7 +583,7 @@
 
               <div class="col-3">
                 <div class="result-icon ilt"></div>
-                <h3 class="result">I.L.T.</h3>
+                <h3 class="result"><span id="h_ilt">I.L.T.</span></h3>
                 <p class="big-number"><span id='result_insurance_ilt'>&nbsp;</span></p>
                 <div id="result_table_ilt"></div>
               </div>
@@ -597,7 +597,7 @@
             <div class="row">
 
               <div class="col-9 margin__top-s">
-                <p><strong>Esperanza de vida según el agravamiento:</strong></p>
+                <p><strong><span id="h_life_expectancy">Esperanza de vida según el agravamiento</span>:</strong></p>
                 <div id="result_charge_table"></div>
               </div>
               <div class="col-3-plus">
@@ -616,11 +616,11 @@
 
 
             <div class="modal-print">
-              <button onclick="window.print()">Imprimir</button>
+              <button onclick="window.print()"><span id='h_print'>Imprimir</span></button>
             </div>
           </div>
           <div class="modal-footer">
-            <p><small><span id="result_year"></span><span id="modal_footer_copyright">©NacionalRe. Todos los derechos reservados.</span></small></p>
+            <p><small><span id="result_year"></span><span id="modal_footer_result">©NacionalRe. Todos los derechos reservados.</span></small></p>
           </div>
         </div>
 
