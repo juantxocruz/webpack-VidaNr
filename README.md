@@ -2,7 +2,7 @@
 
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
-VidaNr NacionalRe Calculator
+Webpack 5 VidaNr NacionalRe Calculator
 
 ### Installation
 
@@ -18,11 +18,46 @@ http://localhost:8080/
 npm start
 ```
 
+
+
 ### Build Prod Version
+
+Building local
 
 ```sh
 npm run build
 ```
+
+Building NacionalRe (see package.json)
+
+```sh
+npm run build:nacionalRe
+```
+
+### Languages:Spanish and English.
+
+Default language is Spanish.
+
+```sh
+http://localhost:8080/?lang=es
+```
+
+```sh
+http://localhost:8080/?lang=en
+```
+
+On server:
+
+```sh
+https://www.botsoul.com/pruebas/nacionalRe-vidaNr/build/?lang=es
+```
+
+```sh
+https://www.botsoul.com/pruebas/nacionalRe-vidaNr/build/?lang=en
+```
+
+
+
 
 ### Features:
 
