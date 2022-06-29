@@ -1,4 +1,5 @@
 import { idiom } from './index';
+import { getDictionaryWord, setFormDictionary } from './dictionary';
 
 let self = document;
 
@@ -18,7 +19,7 @@ let dictionary = [{ "key": "date", "value": "fecha" },
 { "key": "t2", "value": "tipo 2" },
 { "key": "yearsDiabetes", "value": "años de tratamiento de diabetes" },
 { "key": "weigth", "value": "peso" },
-{ "key": "height", "value": "pltura" },
+{ "key": "height", "value": "altura" },
 { "key": "imc", "value": "índice de masa muscular" },
 { "key": "cigarettes", "value": "cigarrillo" },
 { "key": "cigars", "value": "puro" },
@@ -78,12 +79,12 @@ export function initModalResults() {
 }
 
 
-
+/*
 function getDictionaryWord(key) {
     return dictionary.filter(d => d.key === key);
 }
 
-
+*/
 
 function getAlcohol(beers, wines, spirits) {
     let result = '';
@@ -283,8 +284,6 @@ function drawLifeExpectancyTable(_expectancy) {
 
 export function openModalResults(event, _vars, $results, $insurance, _lifeExpectancy) {
     event.stopPropagation();
-
-    let x = idiom;
     // vars
 
     const options = { timeZone: 'Europe/Paris', timeZoneName: 'short' };
