@@ -6,52 +6,6 @@ let self = document;
 let modal_result = self.getElementById("modal_result");
 let close_modal_result = self.getElementById("close_modal_result");
 let life_expectancy_container = self.getElementById("life_expectancy_container");
-
-
-
-let dictionary = [{ "key": "date", "value": "fecha" },
-{ "key": "age", "value": "edad" },
-{ "key": "gender", "value": "género" },
-{ "key": "male", "value": "Hombre" },
-{ "key": "female", "value": "Mujer" },
-{ "key": "diabetes", "value": "diabetes" },
-{ "key": "t1", "value": "tipo 1" },
-{ "key": "t2", "value": "tipo 2" },
-{ "key": "yearsDiabetes", "value": "años de tratamiento de diabetes" },
-{ "key": "weigth", "value": "peso" },
-{ "key": "height", "value": "altura" },
-{ "key": "imc", "value": "índice de masa muscular" },
-{ "key": "cigarettes", "value": "cigarrillo" },
-{ "key": "cigars", "value": "puro" },
-{ "key": "pipes", "value": "pipa" },
-{ "key": "wines", "value": "vino" },
-{ "key": "beers", "value": "cerveza" },
-{ "key": "spirits", "value": "licor" },
-{ "key": "systolic_1", "value": "sistólica" },
-{ "key": "diastolic_1", "value": "diastólica" },
-{ "key": "systolic_2", "value": "sistólica" },
-{ "key": "diastolic_2", "value": "diastólica" },
-{ "key": "insulin", "value": "insulina" },
-{ "key": "ins1", "value": "Hasta 25 unidades diarias de insulina" },
-{ "key": "ins2", "value": "Más de 25 unidades diarias de insulina" },
-{ "key": "hemoglobin", "value": "hemoglobina" },
-{ "key": "hem1", "value": "Menos de 7,0" },
-{ "key": "hem2", "value": "De 7,0 a 7,5" },
-{ "key": "hem3", "value": "De 7,6 a 8,0" },
-{ "key": "hem4", "value": "De 8,1 a 9,0" },
-{ "key": "hem5", "value": "De 9,1 a 10" },
-{ "key": "hem6", "value": "Más de 10" },
-{ "key": "cholesterol", "value": "colesterol" },
-{ "key": "cho0", "value": "Hasta 240" },
-{ "key": "cho1", "value": "De 241 a  270" },
-{ "key": "cho2", "value": "De 271 a  300" },
-{ "key": "cho3", "value": "De 301 a 375" },
-{ "key": "cho4", "value": "De 376 a 450" },
-{ "key": "cho5", "value": "Más de 450" }
-];
-
-
-
 let result_today = self.getElementById('result_today');
 let result_year = self.getElementById('result_year');
 let result_vars_constitution = self.getElementById('result_vars_constitution');
@@ -79,36 +33,30 @@ export function initModalResults() {
 }
 
 
-/*
-function getDictionaryWord(key) {
-    return dictionary.filter(d => d.key === key);
-}
-
-*/
 
 function getAlcohol(beers, wines, spirits) {
     let result = '';
     if (beers === 0 && wines === 0 && spirits === 0) {
-        result += 'No consume alcohol';
+        result += getDictionaryWord('not_consume_alcohol');
         return result;
     } else {
         if (beers === 0 || beers > 1) {
-            result += beers + ' cervezas + | ';
+            result += beers + ' ' + getDictionaryWord('beer') + 's | ';
         }
         if (beers === 1) {
-            result += '1 cerveza | ';
+            result += '1 ' + getDictionaryWord('beer') + ' | ';
         }
         if (wines === 0 || wines > 1) {
-            result += wines + ' vinos + | ';
+            result += wines + ' ' + getDictionaryWord('wine') + 's | ';
         }
         if (wines === 1) {
-            result += '1 vino | ';
+            result += '1 ' + getDictionaryWord('wine') + ' | ';
         }
         if (spirits === 0 || spirits > 1) {
-            result += spirits + ' licores';
+            result += spirits + ' ' + getDictionaryWord('liqueur') + 's | ';
         }
         if (spirits === 1) {
-            result += '1 licor';
+            result += '1 ' + getDictionaryWord('liqueur');
         }
     }
     return result;
@@ -117,28 +65,28 @@ function getAlcohol(beers, wines, spirits) {
 function getTobacco(cigarettes, cigars, pipes) {
     let result = '';
     if (cigarettes === 0 && cigars === 0 && pipes === 0) {
-        result += 'No consume tabaco';
+        result +=  getDictionaryWord('not_consume_tobacco');
         return result;
     } else {
         if (cigarettes === 0 || cigarettes > 1) {
-            result += cigarettes + ' cigarrillos | ';
+            result += cigarettes + ' ' + getDictionaryWord('cigarette') + 's | ';
         }
         if (cigarettes === 1) {
-            result += '1 cigarrillo | ';
+            result += '1 ' + getDictionaryWord('cigarette') + ' | ';
         }
 
         if (cigars === 0 || cigars > 1) {
-            result += cigars + ' puros | ';
+            result += cigars +  ' ' + getDictionaryWord('cigar') + 's | ';
         }
         if (cigars === 1) {
-            result += '1 puro | ';
+            result += '1 ' + getDictionaryWord('cigar') + ' | ';
         }
 
         if (pipes === 0 || pipes > 1) {
-            result += pipes + ' pipas';
+            result += pipes + ' ' + getDictionaryWord('pipe') + 's';
         }
         if (pipes === 1) {
-            result += pipes + ' pipa';
+            result += pipes + ' '+ getDictionaryWord('pipe');
         }
 
     }
@@ -200,38 +148,38 @@ function getTableResult(data, $insurance, key) {
     table += '<tr>';
 
     if (key === 'accident') {
-        table += '<td>IMC</td>';
+        table += '<td>'+ getDictionaryWord('imc_initials')+ '</td>';
         table += ' <td>' + getPartialResult(data.imc[key] / 2) + '</td>';
     } else {
-        table += '<td>IMC</td>';
+        table += '<td>'+ getDictionaryWord('imc_initials')+ '</td>';
         table += ' <td>' + getPartialResult(data.imc[key]) + '</td>';
     }
     //table += ' <td>' + getPartialResult(data.imc[key]) + '</td>';
     table += ' </tr>';
 
     table += '<tr>';
-    table += '<td>Tabaco</td>';
+    table += '<td>'+ getDictionaryWord('tobacco_upper')+ '</td>';
     table += ' <td>' + getPartialResult(data.tobacco[key]) + '</td>';
     table += ' </tr>';
 
     table += '<tr>';
-    table += '<td>Alcohol</td>';
+    table += '<td>'+ getDictionaryWord('alcohol_upper')+ '</td>';
     table += ' <td>' + getPartialResult(data.alcohol[key]) + '</td>';
     table += ' </tr>';
 
     table += '<tr>';
-    table += '<td>Tensión</td>';
+    table += '<td>'+ getDictionaryWord('pressure_upper')+ '</td>';
     table += ' <td>' + getPartialResult(data.tension) + '</td>';
     table += ' </tr>';
 
 
     table += '<tr>';
-    table += '<td>Colesterol</td>';
+    table += '<td>'+ getDictionaryWord('cholesterol_upper')+ '</td>'
     table += ' <td>' + getPartialResult(data.cholesterol) + '</td>';
     table += ' </tr>';
 
     table += '<tr>';
-    table += '<td>Cúmulo</td>';
+    table += '<td>'+ getDictionaryWord('cumulus_upper')+ '</td>'
     table += ' <td>' + getSurcharge(data, $insurance, key) + '</td>';
     table += ' </tr>';
 
@@ -291,23 +239,23 @@ export function openModalResults(event, _vars, $results, $insurance, _lifeExpect
 
     let newDate = new Date();
     let year = newDate.getFullYear();
-    let today = newDate.getDate() + '/' + (newDate.getMonth() + 1) + '/' + newDate.getFullYear() + ' a las ' + stringtime[0] + ':' + stringtime[1] + 'h.';
-    let gender = getDictionaryWord(_vars.gender)[0].value;
+    let today = newDate.getDate() + '/' + (newDate.getMonth() + 1) + '/' + newDate.getFullYear() + ' ' + getDictionaryWord('today_at') + ' ' + stringtime[0] + ':' + stringtime[1] + 'h.';
+    let gender = getDictionaryWord(_vars.gender + '_upper');
     let bornDate = new Date(_vars.date);
     let date = bornDate.getDate() + '/' + (bornDate.getMonth() + 1) + '/' + bornDate.getFullYear() + '';
-    let age = _vars.age.regular + ' años';
-    let actuarial = _vars.age.actuarial + ' años';
-    let height = _vars.height + ' cm';
-    let weight = _vars.weight + ' kg';
-    let imc = _vars.imc + ' imc';
-    let systolic = _vars._hypertension_mean.systolic + ' sistólica';
-    let diastolic = _vars._hypertension_mean.diastolic + ' diastólica';
-    let cholesterol = getDictionaryWord(_vars.cholesterol)[0].value + ' colesterol';
+    let age = _vars.age.regular + ' ' + getDictionaryWord('years');
+    let actuarial = _vars.age.actuarial + ' ' + getDictionaryWord('years');
+    let height = _vars.height + ' '+ getDictionaryWord('cm');
+    let weight = _vars.weight + ' ' + getDictionaryWord('kg');
+    let imc = _vars.imc + ' ' + getDictionaryWord('imc_initials');
+    let systolic = _vars._hypertension_mean.systolic + ' ' + getDictionaryWord('systolic');
+    let diastolic = _vars._hypertension_mean.diastolic + ' ' + getDictionaryWord('diastolic');
+    let cholesterol = getDictionaryWord('label_' + _vars.cholesterol) + ' ' + getDictionaryWord('cholesterol');
     let alcohol = getAlcohol(parseInt(_vars.beers), parseInt(_vars.wines), parseInt(_vars.spirits));
     let tobacco = getTobacco(parseInt(_vars.cigarettes), parseInt(_vars.cigars), parseInt(_vars.pipes));
 
 
-    let constitution = gender + ' | ' + date + ' | ' + age + ' (real) | ' + actuarial + ' (actuarial) | ' + height + ' | ' + weight + ' | ' + imc;
+    let constitution = gender + ' | ' + date + ' | ' + age + ' ('+ getDictionaryWord('date_real')  + ') | ' + actuarial + ' (' + getDictionaryWord('date_actuarial') + ') | ' + height + ' | ' + weight + ' | ' + imc;
     let medical = systolic + ' | ' + diastolic;
     let drugs = cholesterol + ' | ' + alcohol + ' | ' + tobacco;
     let insurance_life = getInsurance($insurance, 'life');
