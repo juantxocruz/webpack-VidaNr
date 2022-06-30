@@ -53,7 +53,7 @@ function getAlcohol(beers, wines, spirits) {
             result += '1 ' + getDictionaryWord('wine') + ' | ';
         }
         if (spirits === 0 || spirits > 1) {
-            result += spirits + ' ' + getDictionaryWord('liqueur') + 's | ';
+            result += spirits + ' ' + getDictionaryWord('liqueur') + 's  ';
         }
         if (spirits === 1) {
             result += '1 ' + getDictionaryWord('liqueur');
