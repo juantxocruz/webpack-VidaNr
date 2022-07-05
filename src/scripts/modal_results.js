@@ -96,7 +96,7 @@ function getTobacco(cigarettes, cigars, pipes) {
 // results from raw excel tables, with no factor calculations
 function getPartialResult(number) {
     if (number > 300) {
-        return '<span class="red">Rechazar</span>';
+        return '<span class="red">'+getDictionaryWord('refuse_upper') + '</span>';
     }
     if (number === 0) {
         return '<span class="green">Normal</span>';
@@ -117,7 +117,7 @@ function getSurcharge(data, insurance, key) {
     let sum = 0;
 
     if (insurance[key] > 999) {
-        return '<span class="red">Rechazar</span>';
+        return '<span class="red">'+ getDictionaryWord('refuse_upper') + '</span>';
     } else {
         if (key === 'accident') {
             sum = data.alcohol[key] + data.cholesterol + data.imc[key] / 2 + data.tension + data.tobacco[key];

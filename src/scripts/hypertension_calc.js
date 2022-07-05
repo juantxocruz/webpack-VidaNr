@@ -1,3 +1,5 @@
+import { getDictionaryWord, setFormDictionary } from './dictionary';
+import { modalSetup, openModalWindow, initModalWindow } from './modal_window';
 
 function isBlank(str) {
     return (!!!str || /^\s*$/.test(str));
@@ -46,14 +48,14 @@ export function hypertensionMsgOff() {
 
 export function isCompensatedTension() {
     let $phrase = document.getElementById("hypertension_msg");
-    if ($phrase.innerHTML === 'Compensada') {
+    if ($phrase.innerHTML === 'Compensada' || $phrase.innerHTML === 'Compensated') {
         return true;
     }
     return false;
 }
 export function isNotCompensatedTension() {
     let $phrase = document.getElementById("hypertension_msg");
-    if ($phrase.innerHTML === 'Descompensada') {
+    if ($phrase.innerHTML === 'Descompensada' || $phrase.innerHTML === 'Unbalanced') {
         return true;
     }
     return false;
@@ -74,16 +76,18 @@ export function setHypertensionPhrase(hypertension_mean) {
     if (hypertension_mean.systolic > 0 && hypertension_mean.diastolic > 0) {
 
         if ((hypertension_mean.systolic - hypertension_mean.diastolic) >= 20) {
-            $phrase.innerHTML = 'Compensada';
+            $phrase.innerHTML = getDictionaryWord('compensated_upper');
             $phrase.classList.add("green");
         }
         else {
-            $phrase.innerHTML = 'Descompensada';
+            $phrase.innerHTML = getDictionaryWord('unbalanced_upper');
             $phrase.classList.add("red");
-            this.modalSetup.header = "Tarificación cancelada"
-            this.modalSetup.content = 'La diferencia entre la tensión sistólica y la tensión diástolica es menor de 20 y, por tanto, está muy descompensada.';
-            this.modalSetup.action = "Por favor, asegúrese de que la cifra es correcta para poder realizar la tarificación."
-            this.openModalWindow(this, this.modalSetup);
+            modalSetup.header =  getDictionaryWord("compensatedTensionModal_header");
+            modalSetup.content =  getDictionaryWord("compensatedTensionModal_content");
+            modalSetup.action =  getDictionaryWord("compensatedTensionModal_action");
+            modalSetup.footer= getDictionaryWord("modal_footer_info");
+          
+            openModalWindow(null, modalSetup);
         }
     } else {
         $phrase.innerHTML = ''
