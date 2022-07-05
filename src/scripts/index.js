@@ -121,7 +121,7 @@ let imcPostponeSetup = {
 let tensionRefuseSetup = {
   header: getDictionaryWord("tensionRefuseSetup_header"),
   content: getDictionaryWord("tensionRefuseSetup_content"),
-  action: getDictionaryWord("itensionRefuseSetup_action"),
+  action: getDictionaryWord("tensionRefuseSetup_action"),
   footer: getDictionaryWord("modal_footer_info")
 }
 
@@ -613,16 +613,19 @@ function initNumericField(name) {
         let _systolic = e.currentTarget.value; // string 
 
         if (parseInt(_systolic) > systolicRange[1]) {
-    
+          modalSetup.header = getDictionaryWord("modal_header_info");
           modalSetup.content = getDictionaryWord("systolicModalSetup_High_content") + ' ' + systolicRange[1] + '.';
           modalSetup.action = getDictionaryWord("date_is_not_correct");
+          modalSetup.footer= getDictionaryWord("modal_footer_info");
           openModalWindow(e, modalSetup);
           e.currentTarget.value = '';
         }
 
         if (parseInt(_systolic) < systolicRange[0]) {
+          modalSetup.header = getDictionaryWord("modal_header_info");
           modalSetup.content = getDictionaryWord("systolicModalSetup_Low_content") + ' ' + systolicRange[0] + '.';
           modalSetup.action = getDictionaryWord("date_is_not_correct");
+          modalSetup.footer= getDictionaryWord("modal_footer_info");
           openModalWindow(e, modalSetup);
           e.currentTarget.value = '';
 
@@ -644,16 +647,20 @@ function initNumericField(name) {
         let _diastolic = e.currentTarget.value; // string
 
         if (parseInt(_diastolic) > diastolicRange[1]) {
+          modalSetup.header = getDictionaryWord("modal_header_info");
           modalSetup.content = getDictionaryWord("diastolicModalSetup_High_content") + " " + diastolicRange[1] + '.';
           modalSetup.action = getDictionaryWord("date_is_not_correct");
+          modalSetup.footer= getDictionaryWord("modal_footer_info");
 
           openModalWindow(e, modalSetup);
           e.currentTarget.value = '';
 
         }
         if (parseInt(_diastolic) < diastolicRange[0]) {
+          modalSetup.header = getDictionaryWord("modal_header_info");
           modalSetup.content = getDictionaryWord("diastolicModalSetup_Low_content") + " " + diastolicRange[0] + '.';
           modalSetup.action = getDictionaryWord("date_is_not_correct");
+          modalSetup.footer= getDictionaryWord("modal_footer_info");
           openModalWindow(e, modalSetup);
           e.currentTarget.value = '';
 

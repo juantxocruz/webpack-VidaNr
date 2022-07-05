@@ -6,7 +6,7 @@
     position: relative;
     width: 100%;
     margin: 0 auto;
-    padding: 0 50px;
+    padding: 0 48px;
     clear: both;
   }
   .container.modal {
@@ -75,12 +75,21 @@
 
   // pad
   @media only screen and (max-width: 989px) {
+    .container {
+      padding: 0 8px;
+    }
   }
 
   //mobile
   @media only screen and (max-width: 767px) {
+  
+ 
+  }
+   //mobile
+   @media only screen and (max-width: 886px) {
     [class*="col-"] {
       width: 100%;
     }
   }
+
 }
