@@ -53,13 +53,6 @@ export function isCompensatedTension() {
     }
     return false;
 }
-export function isNotCompensatedTension() {
-    let $phrase = document.getElementById("hypertension_msg");
-    if ($phrase.innerHTML === 'Descompensada' || $phrase.innerHTML === 'Unbalanced') {
-        return true;
-    }
-    return false;
-}
 
 
 
@@ -121,21 +114,7 @@ export function getHypertensionMean(systolic_1, diastolic_1, systolic_2, diastol
     return hypertesion;
 }
 
-export function calcHypertension(systolic, diastolic) {
 
-    let result = 0;
-    if ((systolic > 145) || (diastolic > 95)) {
-        return result += 999;
-    }
-    if ((systolic > 139) || (diastolic > 89)) {
-        return result += 75;
-    }
-    if ((systolic > 131) || (diastolic > 80)) {
-        return result += 50;
-    }
-    return result;
-
-}
 
 export function setSystolicColors(input, systolic) {
 

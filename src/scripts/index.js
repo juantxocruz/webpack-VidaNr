@@ -25,8 +25,8 @@ import {
   hypertensionFieldsOn,
   hypertensionMsgOff,
   isCompensatedTension,
-  isNotCompensatedTension,
-  calcHypertension
+
+
 } from './hypertension_calc';
 
 import { calcInsurance, calcInMax } from './insurance_calc';
