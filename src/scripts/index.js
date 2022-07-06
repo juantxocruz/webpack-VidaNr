@@ -498,7 +498,7 @@ function initRadioButtons(name) {
         _cholesterol = e.currentTarget.value; // cho1, cho2... cho5
         // to move
         $result.cholesterol = calcCholesterol(_cholesterol, _age.actuarial);
-        let w;
+   
         break;
       default:
         return "";
