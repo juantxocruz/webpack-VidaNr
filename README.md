@@ -990,7 +990,15 @@ La variable la llamaremos **'lnImc_ILT'**.
 
 ### Tabaco
 
-Para calcular la tasa para el tabaco existen dos tablas:
+- Unidades de tabaco:
+
+```bash
+ +cigarretes + (+cigars * 3) + (+pipes * 2);
+ 
+```
+
+
+- Para calcular la tasa para el tabaco existen dos tablas:
 
 - Una tabla para el cálculo para los riesgos de vida, de invalidez, de accidente y de enfermedad grave:
 [tabaco.csv](docs/tabaco.csv).
