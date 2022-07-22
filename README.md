@@ -1181,7 +1181,7 @@ Sobre un único código, la aplicación recoge una variable (key) desde la URL q
 Es decir, existe un diccionario al que la aplicación consulta la traducción de una determinada variable.
 
 - [Diccionario VidaNr](docs/vidaNR_dictionary.csv).
-- [Diccionario Diabetes](docs/diabetes_dictionary.csv).
+
 
 En catellano:
 ```bash
