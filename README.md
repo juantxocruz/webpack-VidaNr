@@ -1224,7 +1224,7 @@ This project is Copyright (C) 2022 Nacional de Reaseguros S.A., all rights reser
 - Eduardo Cruz: Project Manager, **[Visual Thinking, Comunicación y Creatividad](https://www.visualthinking.es/)**. <eduardo@visualthinking.es>.
 - Juantxo Cruz: Web Development. **[juantxocruz.com](https://juantxocruz.com/)**. [@juantxocruz](https://twitter.com/juantxocruz). <jcruz16@gmail.com>
 
-Project Link: [https://github.com/juantxocruz/nacionalRe_docs](https://github.com/juantxocruz/nacionalRe_docs)
+Project Link: [https://github.com/juantxocruz/webpack-VidaNr](https://github.com/juantxocruz/webpack-VidaNr)
 
 
 <p align="right">(<a href="#top">Subir</a>)</p>
