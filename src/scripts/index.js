@@ -49,11 +49,11 @@ export let idiom = getLang(); // ES OR EN
 
 
 function getLang() {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const lang = urlParams.get('lang');
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const lang = urlParams.get('lang');
 
-    return lang ? lang.toUpperCase() : 'ES';
+  return lang && lang.toUpperCase() === "FR" ? "FR" : lang && lang.toUpperCase() === "EN" ? "EN" : "ES";
 }
 
 
@@ -91,9 +91,9 @@ const diastolicRange = [45, 124];
 
 
 let dateRangeModalSetup = {
-  header:  getDictionaryWord("dateRangeModalSetup_header"),
-  content: getDictionaryWord("dateRangeModalSetup_content_1") + " " + dateRange[0] + " " + getDictionaryWord("dateRangeModalSetup_content_2") + " " +  dateRange[1]  + " " + getDictionaryWord("dateRangeModalSetup_content_3") + ".",
-  action:  getDictionaryWord("dateRangeModalSetup_action_1") + " " + toDateString(subtractYearsToDate(new Date(), dateRange[1]), idiom, dateOptions) + " " + getDictionaryWord("dateRangeModalSetup_action_2") + " " +  toDateString(subtractYearsToDate(new Date(), dateRange[0]), idiom, dateOptions) + ".",
+  header: getDictionaryWord("dateRangeModalSetup_header"),
+  content: getDictionaryWord("dateRangeModalSetup_content_1") + " " + dateRange[0] + " " + getDictionaryWord("dateRangeModalSetup_content_2") + " " + dateRange[1] + " " + getDictionaryWord("dateRangeModalSetup_content_3") + ".",
+  action: getDictionaryWord("dateRangeModalSetup_action_1") + " " + toDateString(subtractYearsToDate(new Date(), dateRange[1]), idiom, dateOptions) + " " + getDictionaryWord("dateRangeModalSetup_action_2") + " " + toDateString(subtractYearsToDate(new Date(), dateRange[0]), idiom, dateOptions) + ".",
   footer: getDictionaryWord("modal_footer_info")
 }
 
@@ -101,7 +101,7 @@ let fieldsOffModalSetup = {
   header: getDictionaryWord("modal_header_info"),
   content: getDictionaryWord("fieldsOffModalSetup_content"),
   action: getDictionaryWord("fieldsOffModalSetup_action"),
-  footer: getDictionaryWord("modal_footer_info")  
+  footer: getDictionaryWord("modal_footer_info")
 }
 
 let imcRefuseSetup = {
@@ -498,7 +498,7 @@ function initRadioButtons(name) {
         _cholesterol = e.currentTarget.value; // cho1, cho2... cho5
         // to move
         $result.cholesterol = calcCholesterol(_cholesterol, _age.actuarial);
-   
+
         break;
       default:
         return "";
@@ -543,8 +543,8 @@ function initNumericField(name) {
           modalSetup.header = getDictionaryWord("modal_header_info");
           modalSetup.content = getDictionaryWord("weightModalSetup_1_content") + " " + (minWeight) + " " + getDictionaryWord("weightModalSetup_2_content") + '.';
           modalSetup.action = getDictionaryWord("weightModalSetup_action");
-          modalSetup.footer= getDictionaryWord("modal_footer_info")
-  
+          modalSetup.footer = getDictionaryWord("modal_footer_info")
+
 
           if (_weight !== '') {
             openModalWindow(e, modalSetup);
@@ -570,7 +570,7 @@ function initNumericField(name) {
           modalSetup.header = getDictionaryWord("modal_header_info");
           modalSetup.content = getDictionaryWord("heightModalSetup_1_content") + " " + (minHeight) + " " + getDictionaryWord("heightModalSetup_2_content") + '.';
           modalSetup.action = getDictionaryWord("date_is_not_correct");
-          modalSetup.footer= getDictionaryWord("modal_footer_info");
+          modalSetup.footer = getDictionaryWord("modal_footer_info");
 
           _height = '';
           e.currentTarget.value = '';
@@ -616,7 +616,7 @@ function initNumericField(name) {
           modalSetup.header = getDictionaryWord("modal_header_info");
           modalSetup.content = getDictionaryWord("systolicModalSetup_High_content") + ' ' + systolicRange[1] + '.';
           modalSetup.action = getDictionaryWord("date_is_not_correct");
-          modalSetup.footer= getDictionaryWord("modal_footer_info");
+          modalSetup.footer = getDictionaryWord("modal_footer_info");
           openModalWindow(e, modalSetup);
           e.currentTarget.value = '';
         }
@@ -625,7 +625,7 @@ function initNumericField(name) {
           modalSetup.header = getDictionaryWord("modal_header_info");
           modalSetup.content = getDictionaryWord("systolicModalSetup_Low_content") + ' ' + systolicRange[0] + '.';
           modalSetup.action = getDictionaryWord("date_is_not_correct");
-          modalSetup.footer= getDictionaryWord("modal_footer_info");
+          modalSetup.footer = getDictionaryWord("modal_footer_info");
           openModalWindow(e, modalSetup);
           e.currentTarget.value = '';
 
@@ -650,7 +650,7 @@ function initNumericField(name) {
           modalSetup.header = getDictionaryWord("modal_header_info");
           modalSetup.content = getDictionaryWord("diastolicModalSetup_High_content") + " " + diastolicRange[1] + '.';
           modalSetup.action = getDictionaryWord("date_is_not_correct");
-          modalSetup.footer= getDictionaryWord("modal_footer_info");
+          modalSetup.footer = getDictionaryWord("modal_footer_info");
 
           openModalWindow(e, modalSetup);
           e.currentTarget.value = '';
@@ -660,7 +660,7 @@ function initNumericField(name) {
           modalSetup.header = getDictionaryWord("modal_header_info");
           modalSetup.content = getDictionaryWord("diastolicModalSetup_Low_content") + " " + diastolicRange[0] + '.';
           modalSetup.action = getDictionaryWord("date_is_not_correct");
-          modalSetup.footer= getDictionaryWord("modal_footer_info");
+          modalSetup.footer = getDictionaryWord("modal_footer_info");
           openModalWindow(e, modalSetup);
           e.currentTarget.value = '';
 
@@ -804,9 +804,9 @@ function initSubmit() {
     } else {
       if (fields && fields["length"] === 1 && fields[0].type === 'isCompensatedTension') {
 
-        modalSetup.header =  getDictionaryWord("compensatedTensionModal_header");
-        modalSetup.content =  getDictionaryWord("compensatedTensionModal_content");
-        modalSetup.action =  getDictionaryWord("compensatedTensionModal_action");
+        modalSetup.header = getDictionaryWord("compensatedTensionModal_header");
+        modalSetup.content = getDictionaryWord("compensatedTensionModal_content");
+        modalSetup.action = getDictionaryWord("compensatedTensionModal_action");
         openModalWindow(e, modalSetup);
         return false;
 
@@ -861,5 +861,32 @@ let init = () => {
 
 };
 
-init();
+document.addEventListener("DOMContentLoaded", init, false);
+
+// https://stackoverflow.com/questions/5272433/html5-form-required-attribute-set-custom-validation-message
+// http://jsfiddle.net/hleinone/njSbH/
+document.addEventListener("DOMContentLoaded", function () {
+  var elements = document.getElementsByTagName("INPUT");
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].oninvalid = function (e) {
+      e.target.setCustomValidity("");
+      if (!e.target.validity.valid) {
+        if (idiom === "EN") {
+          e.target.setCustomValidity("This field is out of the allowed range");
+        }
+        if (idiom === "ES") {
+          e.target.setCustomValidity("Este campo esta fuera del rango permitido");
+        }
+        if (idiom === "FR") {
+          e.target.setCustomValidity("Ce champ est en dehors de la plage autorisée");
+        }
+
+
+      }
+    };
+    elements[i].oninput = function (e) {
+      e.target.setCustomValidity("");
+    };
+  }
+})
 

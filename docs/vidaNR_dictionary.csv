@@ -1,136 +1,136 @@
-key,ES,EN
-abstract_upper,Resumen,Abstract
-age,edad,age
-alcohol_daily_consumption,Consumo diario,Daily consumption
-alcohol_upper,Alcohol,Alcohol
-beer,cerveza,beer
-beers_upper,Cervezas,Beers
-birth_date,Fecha nacimiento,Birth date
-birthdayModalSetup_action,"Por favor, escoga una fecha de nuevo",Please choose a date again
-birthdayModalSetup_content,La fecha seleccionada no puede ser mayor que la fecha actual.,The selected date cannot be greater than the current date.
-birthdayModalSetup_header,Fecha incorrecta,Incorrect date
-blood_pressure_intro,Presi�n arterial (mm Hg.). Teclee al menos una toma.,Blood pressure (mmHg). Type at least one blood plessure.
-blood_pressure_upper,Tensi�n arterial,Blood pressure
-cholesterol,colesterol,cholesterol
-cholesterol_total_intro,Miligramos por decilitro (mg/dL),Milligrams per deciliter (mg/dL)
-cholesterol_total_upper,Colesterol total,Total cholesterol
-cholesterol_upper,Colesterol,Cholesterol
-cigar,puro,cigar
-cigarette,cigarrillo,cigarette
-cigarettes_upper,Cigarrillos,Cigarettes
-cigars_upper,Puros,Cigars
-cm,cm,cm
-compensated_upper,Compensada,Compensated
-compensatedTensionModal_action,"Por favor, aseg�rese de que la cifra es correcta para poder realizar la tarificaci�n.",Please make sure that the figure is correct in order to make the pricing.
-compensatedTensionModal_content,"La diferencia entre la tensi�n sist�lica y la tensi�n di�stolica es menor de 20 y, por tanto, est� muy descompensada.","The difference between the systolic pressure and the diastolic pressure is less than 20 and, therefore, is highly unbalanced."
-compensatedTensionModal_header,Tarificaci�n cancelada.,Canceled pricing.
-constitution,Constituci�n,Constitution
-cumulus_upper,C�mulo,Cumulus
-date_actuarial,actuarial,actuarial
-date_is_not_correct,"Por favor, aseg�rese de que la cifra es correcta.",Please make sure the figure is correct.
-date_real,real,actual
-dateRangeModalSetup_action_1,La fecha seleccionada debe estar entre el ,The selected date must be between
-dateRangeModalSetup_action_2,y el ,and the
-dateRangeModalSetup_content_1,"Por favor, escoga una fecha en el rango (entre ",Please choose a date in the range (between
-dateRangeModalSetup_content_2,y,and
-dateRangeModalSetup_content_3,a�os de edad),years old)
-dateRangeModalSetup_header,Atenci�n: Fecha fuera de rango,Attention: Date out of range
-diastolic,di�stolica,diastolic
-diastolic_one_upper,Diast�lica 1,Diastolic 1
-diastolic_two_upper,Diast�lica 2,Diastolic 2
-diastolic_zero_upper,Diast�lica,Diastolic
-diastolicModalSetup_High_content,La tensi�n diast�lica es muy alta para asegurar el riesgo. Debe introducir una tensi�n di�stolica menor de,Diastolic pressure is too high to ensure risk. You should enter a diastolic pressure less than
-diastolicModalSetup_Low_content,La tensi�n diast�lica es muy baja para asegurar el riesgo. Debe introducir una tensi�n di�stolica mayor de,Diastolic pressure is too low to ensure risk. You must introduce a diastolic pressure greater than
-female_upper,Mujer,Female
-fieldsOffModalSetup_action,Existen campos err�neos o sin rellenar.,There are erroneous or unfilled fields.
-fieldsOffModalSetup_content,"Por favor, rellene correctamente los campos con mensajes en rojo.",Please fill in the fields with messages in red correctly.
-first_take,Primera toma,First blood plessure
-gender,edad,gender
-gender_upper,G�nero,Gender
-h_accidents,Accidentes,Accidents
-h_consult_date,Consulta realizada el,Consultation made on
-h_disability,Invalidez,Disability
-h_illness,Enfermedad grave,Serious illness
-h_ilt,I.L.T.,T.W.I.
-h_life,Vida,Life
-h_life_expectancy,Esperanza de vida seg�n el agravamiento,Life expectancy according to aggravation
-h_print,Imprimir,Print
-height,Altura,height
-height_measure,Altura (cm),Height (cm)
-heightModalSetup_1_content,La altura introducida es muy baja. Debe introducir una altura mayor de,The entered height is too low. You must enter a height greater than
-heightModalSetup_2_content,cent�metros,centimeters
-imc,�ndice de masa muscular,Mass Index
-imc_initials,IMC,BMI
-imcPostponeSetup_action,Ingrese nuevos datos o aplace la solicitud.,Enter new data or defer the request.
-imcPostponeSetup_content,Debido a la relaci�n peso/altura esta solicitud debe ser aplazada.,Due to the weight/height ratio this request must be deferred.
-imcPostponeSetup_header,Aplazar la tarificaci�n,Defer charging
-imcRefuseSetup_action,Ingrese nuevos datos o rechace la solicitud.,Enter new data or decline the request.
-imcRefuseSetup_content,Debido a la relaci�n peso/altura esta solicitud debe ser rechazada.,Due to the weight/height ratio this request must be rejected.
-imcRefuseSetup_header,Rechazar,Refuse
-inMaxRefuseSetup_action,Ingrese nuevos datos o consulte con la central.,Enter new data or check with the central.
-inMaxRefuseSetup_content,Se ha excedido el l�mite para el c�lculo de vida y este supuesto aborta el c�lculo de cualquier riesgo.,The limit for life calculation has been exceeded and this assumption aborts the calculation of any risk.
-inMaxRefuseSetup_header,Consulte con la central,Check with the head office
-kg,kg,kg
-label_cho0,Hasta 240,Up to 240
-label_cho1,De 241 a 270,From 241 to 270
-label_cho2,De 271 a 300,From 271 to 300
-label_cho3,De 301 a 375,From 301 to 375
-label_cho4,De 376 a 450,From 376 to 450
-label_cho5,M�s de 450,More than 450
-liqueur,licor,spirit
-liqueurs,licores,spirits
-liqueurs_upper,Licores,Spirits
-male_upper,Hombre,Male
-mandatory_date_1,Fecha obligatoria,Mandatory field
-mandatory_text_1,Campo obligatorio,Mandatory field
-mandatory_text_10,Campo obligatorio,Mandatory field
-mandatory_text_11,Campo obligatorio,Mandatory field
-mandatory_text_12,Campo obligatorio,Mandatory field
-mandatory_text_13,Campo obligatorio,Mandatory field
-mandatory_text_14,Campo obligatorio,Mandatory field
-mandatory_text_15,Campo obligatorio,Mandatory field
-mandatory_text_2,Campo obligatorio,Mandatory field
-mandatory_text_3,Campo obligatorio,Mandatory field
-mandatory_text_4,Campo obligatorio,Mandatory field
-mandatory_text_5,Campo obligatorio,Mandatory field
-mandatory_text_6,Campo obligatorio,Mandatory field
-mandatory_text_7,Campo obligatorio,Mandatory field
-mandatory_text_8,Campo obligatorio,Mandatory field
-mandatory_text_9,Campo obligatorio,Mandatory field
-mass_index,�ndice Masa,Mass Index�
-modal_body1_span,Patolog�a,Pathology
-modal_body2_span,Patolog�a,Pathology
-modal_footer_info, � NacionalRe. Todos los derechos reservados., � NacionalRe. All rights reserved.
-modal_footer_result, � NacionalRe. Todos los derechos reservados., � NacionalRe. All rights reserved.
-modal_header_info,Atenci�n,Attention
-modal_header_result,Calculadora de recargos de seguros,Insurance surcharge calculator
-not_consume_alcohol,No consume alcohol,Don't drink alcohol
-not_consume_tobacco,No fuma,Non smoker
-pipe,pipa,pipe
-pipes_upper,Pipas,Pipes
-pressure_upper,Tensi�n ,Pressure
-refuse_upper,Rechazar,Refuse
-reset_button,Restaurar,Reset
-second_take,Segunda toma,Second blood plessure
-submit_button,Tarificaci�n,Calculate
-systolic,sist�lica,systolic
-systolic_one_upper,Sist�lica 1,Systolic 1
-systolic_two_upper,Sist�lica 2,Systolic 2
-systolic_zero_upper,Sist�lica,Systolic
-systolicModalSetup_High_content,La tensi�n sist�lica es muy alta para asegurar el riesgo. Debe introducir una tensi�n sist�lica menor de,Systolic blood pressure is too high to ensure risk. You should enter a systolic pressure less than
-systolicModalSetup_Low_content,La tensi�n sist�lica es muy baja para asegurar el riesgo. Debe introducir una tensi�n sist�lica mayor de,Systolic blood pressure is too low to ensure risk. You must introduce a systolic pressure greater than
-tensionRefuseSetup_action,Ingrese nuevos datos o rechace la solicitud.,Enter new data or decline the request.
-tensionRefuseSetup_content,Debido a la tensi�n arterial esta solicitud debe ser rechazada.,Due to blood pressure this request must be refused.
-tensionRefuseSetup_header,Rechazar:,Refuse:
-tobacco_daily_consumption,Consumo diario,Daily consumption
-tobacco_upper,Tabaco,Tobacco
-today_at,a las,at
-unbalanced_upper,Descompensada,Unbalance
-weight_measure,Peso (kg),Weight (kg)
-weightModalSetup_1_content,El peso introducido es muy bajo. Debe introducir un peso mayor de,The entered weight is too low. You must enter a weight greater than
-weightModalSetup_2_content,kilos,kilos
-weightModalSetup_action,"Por favor, aseg�rese de que la cifra es correcta.",Please make sure the figure is correct.
-weigth,peso,weigth
-wine,vino,wine
-wines_upper,Vinos,Wines
-years,a�os,years
+key,ES,EN,FR
+abstract_upper,Resumen,Abstract,Résumé
+age,edad,age,âge
+alcohol_daily_consumption,Consumo diario,Daily consumption,Consommation quotidienne
+alcohol_upper,Alcohol,Alcohol,Alcool
+beer,cerveza,beer,bière
+beers_upper,Cervezas,Beers,Bières
+birth_date,Fecha nacimiento,Birth date,Date de naissance
+birthdayModalSetup_action,"Por favor, escoga una fecha de nuevo",Please choose a date again,Veuillez choisir à nouveau une date
+birthdayModalSetup_content,La fecha seleccionada no puede ser mayor que la fecha actual.,The selected date cannot be greater than the current date.,La date sélectionnée ne peut être supérieure à la date du jour.
+birthdayModalSetup_header,Fecha incorrecta,Incorrect date,Date incorrecte
+blood_pressure_intro,Presión arterial (mm Hg.). Teclee al menos una toma.,Blood pressure (mmHg). Type at least one blood plessure.,Tension artérielle (mm Hg.). Saisir au moins un cliché.
+blood_pressure_upper,Tensión arterial,Blood pressure,Pression artérielle
+cholesterol,colesterol,cholesterol,cholesterol
+cholesterol_total_intro,Miligramos por decilitro (mg/dL),Milligrams per deciliter (mg/dL),Milligrammes par décilitre (mg/dL)
+cholesterol_total_upper,Colesterol total,Total cholesterol,Cholestérol total
+cholesterol_upper,Colesterol,Cholesterol,Cholestérol
+cigar,puro,cigar,cigares
+cigarette,cigarrillo,cigarette,cigarette
+cigarettes_upper,Cigarrillos,Cigarettes,Cigarettes
+cigars_upper,Puros,Cigars,Cigares
+cm,cm,cm,cm
+compensated_upper,Compensada,Compensated,Compensés
+compensatedTensionModal_action,"Por favor, asegúrese de que la cifra es correcta para poder realizar la tarificación.",Please make sure that the figure is correct in order to make the pricing.,Veuillez vous assurer que le numéro est correct afin d'effectuer la tarification.
+compensatedTensionModal_content,"La diferencia entre la tensión sistólica y la tensión diástolica es menor de 20 y, por tanto, está muy descompensada.","The difference between the systolic pressure and the diastolic pressure is less than 20 and, therefore, is highly unbalanced.",La différence entre la pression systolique et la pression diastolique est inférieure à 20 et est donc très déséquilibrée.
+compensatedTensionModal_header,Tarificación cancelada.,Canceled pricing.,Annulation de la procédure tarifaire.
+constitution,Constitución,Constitution,Constitution
+cumulus_upper,Cúmulo,Cumulus,Cumulus
+date_actuarial,actuarial,actuarial,actuariel
+date_is_not_correct,"Por favor, asegúrese de que la cifra es correcta.",Please make sure the figure is correct.,Veuillez vous assurer que le chiffre est correct.
+date_real,real,actual,actual
+dateRangeModalSetup_action_1,La fecha seleccionada debe estar entre el ,The selected date must be between,La date sélectionnée doit être comprise entre le
+dateRangeModalSetup_action_2,y el ,and the,et le
+dateRangeModalSetup_content_1,"Por favor, escoga una fecha en el rango (entre ",Please choose a date in the range (between,Veuillez choisir une date dans la fourchette (entre 
+dateRangeModalSetup_content_2,y,and,et
+dateRangeModalSetup_content_3,años de edad),years old),ans)
+dateRangeModalSetup_header,Atención: Fecha fuera de rango,Attention: Date out of range,Attention : Date hors plage
+diastolic,diástolica,diastolic,diastolique
+diastolic_one_upper,Diastólica 1,Diastolic 1,Diastolique 1
+diastolic_two_upper,Diastólica 2,Diastolic 2,Diastolique 2
+diastolic_zero_upper,Diastólica,Diastolic,Diastolique
+diastolicModalSetup_High_content,La tensión diastólica es muy alta para asegurar el riesgo. Debe introducir una tensión diástolica menor de,Diastolic pressure is too high to ensure risk. You should enter a diastolic pressure less than,La pression diastolique est trop élevée pour garantir le risque. Vous devez indiquer une pression diastolique inférieure à
+diastolicModalSetup_Low_content,La tensión diastólica es muy baja para asegurar el riesgo. Debe introducir una tensión diástolica mayor de,Diastolic pressure is too low to ensure risk. You must introduce a diastolic pressure greater than,La pression diastolique est trop basse pour garantir le risque. Vous devez indiquer une pression diastolique supérieure à
+female_upper,Mujer,Female,Femme
+fieldsOffModalSetup_action,Existen campos erróneos o sin rellenar.,There are erroneous or unfilled fields.,Des champs sont incorrects ou manquants.
+fieldsOffModalSetup_content,"Por favor, rellene correctamente los campos con mensajes en rojo.",Please fill in the fields with messages in red correctly.,Veuillez remplir correctement les champs dont les messages sont en rouge.
+first_take,Primera toma,First blood plessure,Première mesure
+gender,edad,gender,âge
+gender_upper,Género,Gender,Sexe
+h_accidents,Accidentes,Accidents,Accidents
+h_consult_date,Consulta realizada el,Consultation made on,Consultation du 
+h_disability,Invalidez,Disability,Invalidité
+h_illness,Enfermedad grave,Serious illness,Maladie grave
+h_ilt,I.L.T.,T.W.I.,ITT
+h_life,Vida,Life,Vie
+h_life_expectancy,Esperanza de vida según el agravamiento,Life expectancy according to aggravation,Espérance de vie en fonction de l'aggravation
+h_print,Imprimir,Print,Imprimer
+height,Altura,height,Hauteur
+height_measure,Altura (cm),Height (cm),Hauteur (cm)
+heightModalSetup_1_content,La altura introducida es muy baja. Debe introducir una altura mayor de,The entered height is too low. You must enter a height greater than,La hauteur introduite est trop basse. Vous devez saisir une hauteur supérieure à
+heightModalSetup_2_content,centímetros,centimeters,centimètres
+imc,índice de masa corporal,Mass Index,indice de masse corporelle
+imc_initials,IMC,BMI,IMC
+imcPostponeSetup_action,Ingrese nuevos datos o aplace la solicitud.,Enter new data or defer the request.,Saisir de nouvelles données ou reporter la demande.
+imcPostponeSetup_content,Debido a la relación peso/altura esta solicitud debe ser aplazada.,Due to the weight/height ratio this request must be deferred.,"En raison du rapport poids/hauteur, cette demande devrait être reportée."
+imcPostponeSetup_header,Aplazar la tarificación,Defer charging,Différer la fixation des prix
+imcRefuseSetup_action,Ingrese nuevos datos o rechace la solicitud.,Enter new data or decline the request.,Saisir de nouvelles données ou rejeter la demande.
+imcRefuseSetup_content,Debido a la relación peso/altura esta solicitud debe ser rechazada.,Due to the weight/height ratio this request must be rejected.,"En raison du rapport poids/hauteur, cette demande doit être rejetée."
+imcRefuseSetup_header,Rechazar,Refuse,Refuser
+inMaxRefuseSetup_action,Ingrese nuevos datos o consulte con la central.,Enter new data or check with the central.,Introduire de nouvelles données ou consulter le siège.
+inMaxRefuseSetup_content,Se ha excedido el límite para el cálculo de vida y este supuesto aborta el cálculo de cualquier riesgo.,The limit for life calculation has been exceeded and this assumption aborts the calculation of any risk.,La limite pour le calcul de la durée de vie a été dépassée et cette hypothèse annule le calcul de tout risque.
+inMaxRefuseSetup_header,Consulte con la central,Check with the head office,Consulter le siège
+kg,kg,kg,kg
+label_cho0,Hasta 240,Up to 240,Jusqu'à 240
+label_cho1,De 241 a 270,From 241 to 270,De 241 à 270
+label_cho2,De 271 a 300,From 271 to 300,De 271 à 300
+label_cho3,De 301 a 375,From 301 to 375,De 301 à 375
+label_cho4,De 376 a 450,From 376 to 450,De 376 à 450
+label_cho5,Más de 450,More than 450,Plus de 450
+liqueur,licor,spirit,liqueur
+liqueurs,licores,spirits,esprits
+liqueurs_upper,Licores,Spirits,Esprits
+male_upper,Hombre,Male,Homme
+mandatory_date_1,Fecha obligatoria,Mandatory field,Date obligatoire
+mandatory_text_1,Campo obligatorio,Mandatory field,Champ obligatoire
+mandatory_text_10,Campo obligatorio,Mandatory field,Champ obligatoire
+mandatory_text_11,Campo obligatorio,Mandatory field,Champ obligatoire
+mandatory_text_12,Campo obligatorio,Mandatory field,Champ obligatoire
+mandatory_text_13,Campo obligatorio,Mandatory field,Champ obligatoire
+mandatory_text_14,Campo obligatorio,Mandatory field,Champ obligatoire
+mandatory_text_15,Campo obligatorio,Mandatory field,Champ obligatoire
+mandatory_text_2,Campo obligatorio,Mandatory field,Champ obligatoire
+mandatory_text_3,Campo obligatorio,Mandatory field,Champ obligatoire
+mandatory_text_4,Campo obligatorio,Mandatory field,Champ obligatoire
+mandatory_text_5,Campo obligatorio,Mandatory field,Champ obligatoire
+mandatory_text_6,Campo obligatorio,Mandatory field,Champ obligatoire
+mandatory_text_7,Campo obligatorio,Mandatory field,Champ obligatoire
+mandatory_text_8,Campo obligatorio,Mandatory field,Champ obligatoire
+mandatory_text_9,Campo obligatorio,Mandatory field,Champ obligatoire
+mass_index,Índice Masa,Mass Index ,Indice de masse
+modal_body1_span,Patología,Pathology,Pathologie
+modal_body2_span,Patología,Pathology,Pathologie
+modal_footer_info, © NacionalRe. Todos los derechos reservados., © NacionalRe. All rights reserved., © NacionalRe. Tous droits réservés.
+modal_footer_result, © NacionalRe. Todos los derechos reservados., © NacionalRe. All rights reserved., © NacionalRe. Tous droits réservés.
+modal_header_info,Atención,Attention,Attention
+modal_header_result,Calculadora de recargos de seguros,Insurance surcharge calculator,Calculateur de surprime d'assurance
+not_consume_alcohol,No consume alcohol,Don't drink alcohol,Pas de consommation d'alcool
+not_consume_tobacco,No fuma,Non smoker,Non-fumeur
+pipe,pipa,pipe,pipe à fumer
+pipes_upper,Pipas,Pipes,Pipes à fumer
+pressure_upper,Tensión ,Pressure,Pression artérielle
+refuse_upper,Rechazar,Refuse,Rejeter
+reset_button,Restaurar,Reset,Restaurer
+second_take,Segunda toma,Second blood plessure,Deuxième mesure 
+submit_button,Tarificación,Calculate,Tarification
+systolic,sistólica,systolic,systolique
+systolic_one_upper,Sistólica 1,Systolic 1,Systolique 1
+systolic_two_upper,Sistólica 2,Systolic 2,Systolique 2
+systolic_zero_upper,Sistólica,Systolic,Systolique
+systolicModalSetup_High_content,La tensión sistólica es muy alta para asegurar el riesgo. Debe introducir una tensión sistólica menor de,Systolic blood pressure is too high to ensure risk. You should enter a systolic pressure less than,La pression systolique est trop élevée pour garantir le risque. Vous devez indiquer une pression systolique inférieure à
+systolicModalSetup_Low_content,La tensión sistólica es muy baja para asegurar el riesgo. Debe introducir una tensión sistólica mayor de,Systolic blood pressure is too low to ensure risk. You must introduce a systolic pressure greater than,La pression systolique est trop basse pour garantir le risque. Vous devez entrer une pression systolique supérieure à
+tensionRefuseSetup_action,Ingrese nuevos datos o rechace la solicitud.,Enter new data or decline the request.,Saisir de nouvelles données ou rejeter la demande.
+tensionRefuseSetup_content,Debido a la tensión arterial esta solicitud debe ser rechazada.,Due to blood pressure this request must be refused.,"En raison de la tension artérielle, cette demande doit être rejetée."
+tensionRefuseSetup_header,Rechazar:,Refuse:,Refuser:
+tobacco_daily_consumption,Consumo diario,Daily consumption,Consommation quotidienne
+tobacco_upper,Tabaco,Tobacco,Tabac
+today_at,a las,at,à
+unbalanced_upper,Descompensada,Unbalance,Déséquilibré
+weight_measure,Peso (kg),Weight (kg),Poids (kg)
+weightModalSetup_1_content,El peso introducido es muy bajo. Debe introducir un peso mayor de,The entered weight is too low. You must enter a weight greater than,Le poids saisi est trop faible. Vous devez entrer un poids supérieur à
+weightModalSetup_2_content,kilos,kilos,kilos
+weightModalSetup_action,"Por favor, asegúrese de que la cifra es correcta.",Please make sure the figure is correct.,Veuillez vous assurer que le chiffre est correct.
+weigth,peso,weigth,poids
+wine,vino,wine,vin
+wines_upper,Vinos,Wines,Vins
+years,años,years,années

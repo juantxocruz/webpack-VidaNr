@@ -48,7 +48,9 @@ export function hypertensionMsgOff() {
 
 export function isCompensatedTension() {
     let $phrase = document.getElementById("hypertension_msg");
-    if ($phrase.innerHTML === 'Compensada' || $phrase.innerHTML === 'Compensated') {
+    // WARNING ABOUT LANG, IDIOM, ADD language term here!!
+    if ($phrase.innerHTML === 'Compensada' || $phrase.innerHTML === 'Compensated' || $phrase.innerHTML === 'Compensés') {
+
         return true;
     }
     return false;
@@ -75,11 +77,11 @@ export function setHypertensionPhrase(hypertension_mean) {
         else {
             $phrase.innerHTML = getDictionaryWord('unbalanced_upper');
             $phrase.classList.add("red");
-            modalSetup.header =  getDictionaryWord("compensatedTensionModal_header");
-            modalSetup.content =  getDictionaryWord("compensatedTensionModal_content");
-            modalSetup.action =  getDictionaryWord("compensatedTensionModal_action");
-            modalSetup.footer= getDictionaryWord("modal_footer_info");
-          
+            modalSetup.header = getDictionaryWord("compensatedTensionModal_header");
+            modalSetup.content = getDictionaryWord("compensatedTensionModal_content");
+            modalSetup.action = getDictionaryWord("compensatedTensionModal_action");
+            modalSetup.footer = getDictionaryWord("modal_footer_info");
+
             openModalWindow(null, modalSetup);
         }
     } else {

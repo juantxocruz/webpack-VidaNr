@@ -1198,6 +1198,13 @@ http://localhost:8080/?lang=EN
 http://davinci.nacionalre.es/nacionalRe-vidaNr/build/?lang=en
 ```
 
+En francés:
+```bash
+http://localhost:8080/?lang=FR
+
+http://davinci.nacionalre.es/nacionalRe-vidaNr/build/?lang=fr
+```
+
 
 <p align="right">(<a href="#top">Subir</a>)</p>
 
