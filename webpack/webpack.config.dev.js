@@ -2,7 +2,7 @@ const Path = require('path');
 const Webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const StylelintPlugin = require('stylelint-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 const common = require('./webpack.common.js');
 
@@ -34,11 +34,10 @@ module.exports = merge(common, {
       resolvePluginsRelativeTo: __dirname,
       ignore: true,
       useEslintrc: true,
-    })
+    }),
   ],
   module: {
     rules: [
-
       {
         test: /\.html$/i,
         loader: 'html-loader',
@@ -50,15 +49,8 @@ module.exports = merge(common, {
         test: /\.jsx?$/,
         include: Path.resolve(__dirname, '../src'),
         use: {
-          // without additional settings, this will reference .babelrc
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            /**
-             * From the docs: When set, the given directory will be used
-             * to cache the results of the loader. Future webpack builds
-             * will attempt to read from the cache to avoid needing to run
-             * the potentially expensive Babel recompilation process on each run.
-             */
             cacheDirectory: true,
           },
         },
@@ -66,16 +58,21 @@ module.exports = merge(common, {
       {
         test: /\.s?css$/i,
         use: [
-          "style-loader",
-          "css-loader",
-          'sass-loader',
+          'style-loader',
+          'css-loader',
           {
-            loader: "postcss-loader",
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass'),
+            },
+          },
+          {
+            loader: 'postcss-loader',
             options: {
               postcssOptions: {
                 plugins: [
                   [
-                    "postcss-preset-env",
+                    'postcss-preset-env',
                     {
                       // Options
                     },
@@ -89,4 +86,3 @@ module.exports = merge(common, {
     ],
   },
 });
-
