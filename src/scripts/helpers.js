@@ -17,8 +17,8 @@ export function addEventListenerList(nodelist, event, fn) {
 
 
 
-export function dateIsHigher(dob) {
-  if (Date.now() - dob.getTime() < 0) {
+export function dateIsHigher(birthDate) {
+  if (Date.now() - birthDate.getTime() < 0) {
     return true;
   }
   return false;
@@ -46,36 +46,44 @@ function calculate_days(from, to) {
   let diff = to.getTime() - from.getTime();
   return Math.floor(diff / (1000 * 60 * 60 * 24));
 }
-export function calculate_age(dob) {
-  // age
-  var diff_ms = Date.now() - dob.getTime();
-  var age_dt = new Date(diff_ms);
-
-  let birthday = [dob.getDate(), dob.getMonth()];
-  // full year days
-  let today = new Date();
-  let nextYear = new Date(today.getFullYear() + 1, today.getMonth(), today.getDate());
-  let daysToNextYear = calculate_days(today, nextYear); // 364
-
-  // days from today to your birthday
-  let bday = new Date(today.getFullYear(), birthday[1], birthday[0]);
-  let daysToYourBirthday = calculate_days(today, bday);
-
-  // regular age: more days to your birthday 
-  if (daysToYourBirthday > Math.floor(daysToNextYear / 2)) {
-    return {
-      regular: Math.abs(age_dt.getUTCFullYear() - 1970),
-      actuarial: Math.abs(age_dt.getUTCFullYear() - 1970)
-    }
-  }
-  // actuarial age : less days
-  return {
-    regular: Math.abs(age_dt.getUTCFullYear() - 1970),
-    actuarial: Math.abs(age_dt.getUTCFullYear() + 1 - 1970)
+export function calculate_age(birthDate) {
+  if (!(birthDate instanceof Date) || isNaN(birthDate.getTime())) {
+    throw new Error("Invalid date format. Expected a valid JavaScript Date object.");
   }
 
+  const today = new Date();
 
+  // Compute regular age
+  let regularAge = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  const dayDiff = today.getDate() - birthDate.getDate();
+
+  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+    regularAge--;
+  }
+
+  // Calculate next birthday
+  const nextBirthday = new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+  if (nextBirthday < today) {
+    nextBirthday.setFullYear(today.getFullYear() + 1);
+  }
+
+  // Calculate days to next and from past birthday
+  const daysToNextBirthday = calculate_days(today, nextBirthday);
+  const pastBirthday = new Date(today.getFullYear() - 1, birthDate.getMonth(), birthDate.getDate());
+  const daysFromPastBirthday = calculate_days(pastBirthday, today);
+
+  // Actuarial age calculation: if closer to next birthday, increase age
+  const actuarialAge = daysToNextBirthday < daysFromPastBirthday ? regularAge + 1 : regularAge;
+
+  return { regular: regularAge, actuarial: actuarialAge };
 }
+
+// Helper function to calculate the number of days between two dates
+function calculate_days(date1, date2) {
+  return Math.floor((date2 - date1) / (1000 * 60 * 60 * 24));
+}
+
 
 export function isNumberKey(evt) {
   let e = evt || window.event;
