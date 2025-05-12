@@ -69,9 +69,9 @@ export function calculate_age(birthDate) {
   }
 
   // Calculate days to next and from past birthday
-  const daysToNextBirthday = calculate_days(today, nextBirthday);
+  const daysToNextBirthday = calculate_days_simple(today, nextBirthday);
   const pastBirthday = new Date(today.getFullYear() - 1, birthDate.getMonth(), birthDate.getDate());
-  const daysFromPastBirthday = calculate_days(pastBirthday, today);
+  const daysFromPastBirthday = calculate_days_simple(pastBirthday, today);
 
   // Actuarial age calculation: if closer to next birthday, increase age
   const actuarialAge = daysToNextBirthday < daysFromPastBirthday ? regularAge + 1 : regularAge;
@@ -80,7 +80,7 @@ export function calculate_age(birthDate) {
 }
 
 // Helper function to calculate the number of days between two dates
-function calculate_days(date1, date2) {
+function calculate_days_simple(date1, date2) {
   return Math.floor((date2 - date1) / (1000 * 60 * 60 * 24));
 }
 
