@@ -68,13 +68,19 @@ export function calculate_age(birthDate) {
     nextBirthday.setFullYear(today.getFullYear() + 1);
   }
 
-  // Calculate days to next and from past birthday
-  const daysToNextBirthday = calculate_days_simple(today, nextBirthday);
-  const pastBirthday = new Date(today.getFullYear() - 1, birthDate.getMonth(), birthDate.getDate());
-  const daysFromPastBirthday = calculate_days_simple(pastBirthday, today);
+  // Calculate last birthday (FIXED: use actual last birthday, not always last year)
+  const lastBirthday = new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+  if (lastBirthday > today) {
+    lastBirthday.setFullYear(today.getFullYear() - 1);
+  }
 
-  // Actuarial age calculation: if closer to next birthday, increase age
-  const actuarialAge = daysToNextBirthday < daysFromPastBirthday ? regularAge + 1 : regularAge;
+  // Calculate days to next birthday and from last birthday
+  const daysToNextBirthday = calculate_days_simple(today, nextBirthday);
+  const daysFromLastBirthday = calculate_days_simple(lastBirthday, today);
+
+  // Actuarial age: age on nearest birthday (original FoxPro logic)
+  // "Es la edad que tienes en tu cumpleaños más cercano, sea el pasado o el futuro"
+  const actuarialAge = daysToNextBirthday < daysFromLastBirthday ? regularAge + 1 : regularAge;
 
   return { regular: regularAge, actuarial: actuarialAge };
 }
