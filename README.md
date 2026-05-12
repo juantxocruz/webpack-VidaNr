@@ -44,6 +44,7 @@ Webpack 5 VidaNr NacionalRe Calculator
       </ul>
     </li>
       <li><a href="#traducción">Traducción</a></li>
+    <li><a href="#documentación">Documentación</a></li>
     <li><a href="#licencia">Licencia</a></li>
     <li><a href="#referencias">Referencias</a></li>
     <li><a href="#contactos">Contactos</a></li>
@@ -1205,6 +1206,55 @@ http://localhost:8080/?lang=FR
 http://davinci.nacionalre.es/nacionalRe-vidaNr/build/?lang=fr
 ```
 
+
+<p align="right">(<a href="#top">Subir</a>)</p>
+
+# Documentación
+
+## 📚 Guías Completas del Calculador de Vida
+
+Documentación técnica completa para desarrolladores e implementadores del calculador de seguros de vida.
+
+### 🚀 Inicio Rápido
+- **[README del Calculador](docs/life-calculator/README_LIFE_CALCULATOR.md)** - Índice principal de toda la documentación
+- **[Guía de Referencia Rápida](docs/life-calculator/LIFE_CALCULATOR_QUICK_REFERENCE.md)** - Fórmulas esenciales y reglas especiales
+- **[Errores Comunes](docs/life-calculator/LIFE_CALCULATOR_COMMON_MISTAKES.md)** - Top 10 errores y cómo evitarlos
+
+### 📖 Documentación Técnica
+- **[Casos Extremos y Troubleshooting](docs/life-calculator/LIFE_CALCULATOR_EDGE_CASES.md)** - Condiciones límite y debugging
+- **[Diagramas de Flujo](docs/life-calculator/LIFE_CALCULATOR_FLOWCHARTS.md)** - Flujos visuales de cálculo
+- **[Rationale Actuarial](docs/life-calculator/LIFE_CALCULATOR_WHY_ACTUARIAL_RATIONALE.md)** - Por qué existen las fórmulas
+- **[Historial de Cambios](docs/life-calculator/LIFE_CALCULATOR_CHANGELOG.md)** - Evolución de versiones y fórmulas
+
+### 🔧 Implementación
+- **[Cálculo de Edad Actuarial](docs/life-calculator/ACTUARIAL_AGE_CALCULATION.md)** - Metodología "Age Nearest Birthday"
+- **[Calculador Standalone](docs/life-calculator/STANDALONE_LIFE_CALCULATOR_FEATURE.md)** - Implementación independiente
+
+## 🐛 Correcciones y Análisis
+
+Documentación de bugs corregidos y análisis técnicos:
+
+- **[Fix: Cálculo de Edad Actuarial](fixes/ACTUARIAL_AGE_CALCULATION_FIX.md)** - Corrección del bug en helpers.js (Mayo 2026)
+- **[Análisis: División IMC en Accidentes](fixes/ACCIDENTS_IMC_DIVISION_ANALYSIS.md)** - Por qué IMC se divide por 2 en Accidentes
+- **[Código Original FoxPro](fixes/Código%20orig%20VidaNR%20en%20Davinci30.rtf)** - Código fuente original de referencia
+
+## 💡 Conceptos Clave
+
+### Reglas Especiales de Fórmulas
+1. **Accidentes**: IMC se divide por 2 (÷ 2)
+2. **Enfermedad Grave**: Tabaco se multiplica por 1.5 y usa multiplicador 1.2 (no 1.1)
+3. **Invalidez/Accidente**: Alcohol >75 se convierte en rechazo (-1)
+4. **ILT**: Usa tablas separadas para IMC, Tabaco, Alcohol
+
+### Tipos de Edad
+- **Edad regular**: Edad cronológica para validación
+- **Edad actuarial**: Edad en cumpleaños más cercano (para IMC, Presión Arterial, Colesterol)
+
+### Valores Especiales
+- **-1**: Rechazar (Reject)
+- **-2**: Aplazar (Defer)
+- **999**: Rechazar (específico para ILT)
+- **0**: Normal (sin recargo)
 
 <p align="right">(<a href="#top">Subir</a>)</p>
 
