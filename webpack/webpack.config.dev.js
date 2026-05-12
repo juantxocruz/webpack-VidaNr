@@ -31,9 +31,7 @@ module.exports = merge(common, {
       cache: true,
       formatter: 'stylish',
       eslintPath: require.resolve('eslint'),
-      resolvePluginsRelativeTo: __dirname,
       ignore: true,
-      useEslintrc: true,
     }),
   ],
   module: {
