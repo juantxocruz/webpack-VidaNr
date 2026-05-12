@@ -1,14 +1,14 @@
-@import "./reset";
-@import "./variables";
+@use "./reset";
+@use "./variables" as *;
 
-@import "./avia.sass";
-@import "./layout";
-@import "./typography";
-@import "./margins";
-@import "./form";
-@import "./modal-window";
-@import "./expectancy";
-@import "./print";
+@use "./avia.sass";
+@use "./layout";
+@use "./typography";
+@use "./margins";
+@use "./form";
+@use "./modal-window";
+@use "./expectancy";
+@use "./print";
 
 html {
   /* 62.5% of 16px base font size is 10px */
