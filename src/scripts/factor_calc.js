@@ -23,10 +23,12 @@ function sumFactor(result, type) {
 }
 
 // en los cálculos se utiliza el factor.life para todos los casos
+// Note: factor.ilt is calculated for documentation but all insurances (including ILT) use factor.life
+// This matches the original FoxPro logic where nagra (calculated from life surcharges) is used for all insurance types
 export function calcFactor(result) {
     let factor = {
         life: sumFactor(result, 'life'),
-        ilt: sumFactor(result, 'ilt'),
+        ilt: sumFactor(result, 'ilt'),  // Calculated for documentation, not used in formulas
     }
     return factor;
 
