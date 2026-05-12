@@ -1,0 +1,929 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\froman\fcharset0 TimesNewRomanPSMT;\f2\ftech\fcharset0 Wingdings-Regular;
+\f3\fswiss\fcharset0 Arial-BoldMT;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red255\green255\blue11;
+}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c100000\c100000\c0;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl480\partightenfactor0
+
+\f0\fs32 \cf2 \expnd0\expndtw0\kerning0
+&& Variables locales a usar en este m\'f3dulo
+\f1 \
+
+\f0 LOCAL lcSexo, lnEdad, lnSisto, lnDiasto, QUECAMPO, lnTension, lnimc_cant, lnimc, lnIMC_ILT, lnFuma_cant, lnFuma, lnFuma_ILT, lnBebe_cant, lnBebe, lnBebe_ILT, lnColes_cant, lnColes
+\f1 \
+
+\f0 && Problema.
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 \'a0Hasta v 3.0 recog\'eda en cada variable lnXXXX la cantidad de cosa consumida, y luego machacaba la misma variable con el recargo.
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 && Al a\'f1adir ILT, necesito volver a evaluar consumo con distinta tabla, por lo que he podido poner a 0 (recargo) un consumo moderado y no calcular nada para ILT. Soluci\'f3n: mantengo variable consumo _cant y variable recargo
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 lcSexo\'a0\'a0\'a0\'a0 = IIF(PERSONAS.Sexo=2,"M",IIF(PERSONAS.Sexo=1,"H",""))
+\f1 \
+
+\f0 lnEdad\'a0\'a0\'a0 = IIF(!EMPTY(PERSONAS.FNAC),CALCEDAD(PERSONAS.FNAC),0)
+\f1 \
+
+\f0 && Ojo, CALCEDAD calcula la Edad Actuarial, no la real. Es la edad que tienes en tu cumplea\'f1os m\'e1s cercano, sea el pasado o el futuro (cuando tienes 20,6 a\'f1os ya tienes 21 por ejemplo)
+\f1 \
+
+\f0 IF personas.npeso<>0 AND personas.ntalla<>0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 && lnimc=personas.npeso/(personas.ntalla/100)^2 && se colaban valores extremadamente altos. As\'ed se limita a 99.
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnimc_cant=MIN(personas.npeso/(personas.ntalla/100)^2,99)
+\f1 \
+
+\f0 ELSE
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnimc_cant=0
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 * Tensi\'f3n arterial
+\f1 \
+
+\f0 lnSisto = IIF(PERSONAS.nsisto1>0 and PERSONAS.nsisto2>0, (PERSONAS.nsisto1+PERSONAS.nsisto2)/2,;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 max(PERSONAS.nsisto1,PERSONAS.nsisto2))
+\f1 \
+
+\f0 lnDiasto = IIF(PERSONAS.nDiasto1>0 and PERSONAS.nDiasto2>0, (PERSONAS.nDiasto1+PERSONAS.nDiasto2)/2,;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 max(PERSONAS.nDiasto1,PERSONAS.nDiasto2))
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 * Habitos (tabaco, alcohol)
+\f1 \
+
+\f0 ** Error detectado por cedente (IGI): 60+nulo=0 (60 cigarros + "nulo" puros + "nulo" pipas=0)
+\f1 \
+
+\f0 lnFuma_cant=iif(isnull(personas.ncigarros),0,personas.ncigarros)+;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 (iif(isnull(personas.npipas),0,personas.npipas)*2)+;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 (iif(isnull(personas.npuros),0,personas.npuros)*3)
+\f1 \
+
+\f0 IF ISNULL(lnFuma_cant)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnFuma_cant=0
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 IF lnFuma_cant>99\'a0\'a0\'a0\'a0\'a0 && por si acaso, pues la tabla s\'f3lo recoge hasta ah\'ed
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnFuma_cant=99
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 local lseguir
+\f1 \
+
+\f0 lseguir=.t.
+\f1 \
+
+\f0 DO CASE
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 CASE EMPTY(lcSexo)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 =messagebox("Debe especificar el sexo",64,"Faltan datos impresindibles")
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lseguir=.f.
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 CASE EMPTY(PERSONAS.FNAC)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 =messagebox("Debe especificar la fecha de nacimiento",64,"Faltan datos impresindibles")
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lseguir=.f.
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 CASE lnEdad<14
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 =messagebox("La edad debe ser mayor de 13",64,"Tarificaci\'f3n cancelada")
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lseguir=.f.
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 CASE lnEdad>69
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 =messagebox("La edad excede el l\'edmite para el c\'e1lculo autom\'e1tico",64,"Tarificaci\'f3n cancelada")
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lseguir=.f.
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 CASE lnimc_cant=0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 =messagebox("Debe especificar peso y altura",64,"Faltan datos impresindibles")
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lseguir=.f.
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 CASE lnSisto=0 or lnDiasto=0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 =messagebox("Tensi\'f3n arterial desconocida. Se ignorar\'e1 en los c\'e1lculos",64,"Datos incompletos")
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ** nuevo chequeo para comprobar coherencia y tolerancia de tensiones
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 CASE lnSisto-lnDiasto<20
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 =messagebox("Tensi\'f3n descompensada",64,"Tarificaci\'f3n cancelada")
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lseguir=.f.
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 CASE lnSisto<20 OR lnDiasto<10
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 =messagebox("Las tensiones deben escribirse en formato de 3 d\'edgitos",64,"Tarificaci\'f3n cancelada")
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lseguir=.f.
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 CASE lnSisto<75
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 =messagebox("Tensi\'f3n sist\'f3lica muy baja",64,"Tarificaci\'f3n cancelada")
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lseguir=.f.
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 CASE lnDiasto<45
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 =messagebox("Tensi\'f3n diast\'f3lica muy baja",64,"Tarificaci\'f3n cancelada")
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lseguir=.f.
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 CASE lnSisto>200
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 =messagebox("Tensi\'f3n sist\'f3lica muy alta",64,"Tarificaci\'f3n cancelada")
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lseguir=.f.
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 CASE lnDiasto>124
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 =messagebox("Tensi\'f3n diast\'f3lica muy alta",64,"Tarificaci\'f3n cancelada")
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lseguir=.f.
+\f1 \
+
+\f0 ENDCASE
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 IF ! lseguir\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 && Abortar proceso y regresar donde est\'e1bamos
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 IF USED("_tempo")
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 USE IN _tempo
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ENDIF
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 select\'a0 &oldselect
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 RETURN .f.
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 ** Vamos a buscar el recargo por tensi\'f3n arterial
+\f1 \
+
+\f0 * c:\\fox6\\david\\tasas\\
+\f1 \
+
+\f0 && Debido a los cambios \'faltimos, si no se especifica la tensi\'f3n, no debe calcular nada, pues coger\'eda -1 (rechazar) cuando se est\'e1 diciendo que "se ignorar\'e1..."
+\f1 \
+
+\f0 IF lnSisto=0 or lnDiasto=0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnTension=0
+\f1 \
+
+\f0 ELSE
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 && Esta parte es muy liosa de seguir, por la forma de llegar al dato buscado, con macrosustituciones con el nombre de campo deseado, en el registro apropiado. Supongo que lo har\'e1s de otra forma en tu entorno/lenguaje. Mira la tabla adjunta TENSION (te la paso en XLS) y piensa que tienes que obtener la celda seg\'fan sexo (que dej\'f3 de usarse hace a\'f1os y por eso la tabla tiene \'93I\'94 de indistinto, la edad, la diast\'f3lica, y la sist\'f3lica (campos en columna)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 SELECT * FROM tension WHERE Sexo="X" INTO CURSOR _tempo\'a0\'a0\'a0\'a0\'a0\'a0 
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 SCATTER MEMVAR
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 QUECAMPO = "C1"
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 LOCAL I
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 FOR I=1 TO 9 && Antes hab\'eda 14 rangos
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 TXT=ALLTRIM(PADL(I,2)) (
+\f2 \'e0
+\f0  LOOP, se queda con \'93 1\'94, \'93 2\'94\'85.)
+\f1 \
+\pard\pardeftab720\sl480\partightenfactor0
+
+\f3\b \cf2 \cb3 (
+\f2\b0 \cb1 \'e0
+\f0  
+\f3\b \cb3 PADL(C, N length, [C pad_string]))
+\f1\b0 \cb1 \
+\pard\pardeftab720\sl480\partightenfactor0
+
+\f0 \cf2 \'a0
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 IF lnSisto >= M.c&TXT
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 QUECAMPO="C"+TXT
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 ELSE
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 EXIT
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 ENDIF
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 NEXT I
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 LOCAL ARRAY _LATEMP(1)
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 // buscar edad (39) y diasto(89), luego el rango de sist\'f3lica (c): de 161 a 166 ser\'eda el 45 de C7.
+\f1 \
+\
+
+\f0 \'a0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 &&\'a0\'a0\'a0\'a0\'a0 AND tension.Sexo = lcSexo ; Sexo quitado en v3 (MPL 10-04-2017) && Antes hab\'eda sexo H y M, ahora es Indistinto
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 SELECT TOP 1 DIASTO,HASTAEDAD,&QUECAMPO;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 FROM tension ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 WHERE tension.diasto>= lndiasto ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 AND tension.HastaEdad>=lnEdad ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ORDER BY 1,2 INTO ARRAY _LATEMP\'a0 (
+\f2 \'e0
+\f0  temporal array)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 IF _TALLY>0 (
+\f2 \'e0
+\f0  number of records)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 lnTension=_LATEMP(1,3)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ELSE
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 lnTension=0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ENDIF
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ** FIN recargo por tensi\'f3n arterial
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 ** Vamos a buscar el recargo por IMC
+\f1 \
+
+\f0 SELECT TOP 1 hastaimc,hastaedad,tasa, ilt;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 FROM imc ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 WHERE imc.hastaimc >= lnimc_cant ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 AND imc.hastaedad >= lnEdad ;
+\f1 \
+
+\f0 ORDER BY 1,2 INTO ARRAY _LATEMP
+\f1 \
+
+\f0 lnIMC=_LATEMP(1,3)
+\f1 \
+
+\f0 lnIMC_ILT=_LATEMP(1,4)
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 ** FIN recargo por IMC
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 ** Vamos a buscar el recargo por tabaco
+\f1 \
+
+\f0 && La tabla tabaco (adjunta) era mucho m\'e1s grande, con muchos rangos de edad, que luego simplificaron a 3 rangos, pero no rehice el c\'f3digo. De hacerlo ahora, no usar\'eda este m\'e9todo
+\f1 \
+
+\f0 lnFuma=0
+\f1 \
+
+\f0 IF lnFuma_cant>0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 SELECT TOP 1 cantidad,hastaedad,tasa;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 FROM tabaco ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 WHERE tabaco.cantidad >= lnFuma_cant ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 AND tabaco.hastaedad >= lnEdad ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ORDER BY 1,2 INTO ARRAY _LATEMP
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 IF _TALLY>0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnFuma=_LATEMP(1,3)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ENDIF
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 && PARA ILT:
+\f1 \
+
+\f0 lnFuma_ILT=0
+\f1 \
+
+\f0 IF lnFuma_cant>0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 SELECT TOP 1 cantidad,hastaedad,tasa;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 FROM tabaco_ILT ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 WHERE tabaco_ILT.cantidad >= lnFuma_cant ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 AND tabaco_ILT.hastaedad >= lnEdad ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ORDER BY 1,2 INTO ARRAY _LATEMP
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 IF _TALLY>0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnFuma_ILT=_LATEMP(1,3)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ENDIF
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 ** FIN recargo por tabaco
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 ** Vamos a buscar el recargo por alcohol
+\f1 \
+
+\f0 ** Error detectado por cedente (IGI): IGUAL QUE TABACO: 60+nulo=0 (60 cigarros + "nulo" puros + "nulo" pipas=0)
+\f1 \
+
+\f0 ** lnBebe=personas.ncervezas+personas.nvinos+(personas.nalcohol*2)
+\f1 \
+
+\f0 lnBebe_cant=iif(isnull(personas.ncervezas),0,personas.ncervezas)+;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 iif(isnull(personas.nvinos),0,personas.nvinos)+;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 (iif(isnull(personas.nalcohol),0,personas.nalcohol)*2)
+\f1 \
+
+\f0 lnBebe=0
+\f1 \
+
+\f0 lnBebe_ILT=0
+\f1 \
+
+\f0 IF ISNULL(lnBebe_cant)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnBebe_cant=0
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 IF lnBebe_cant>99\'a0\'a0\'a0\'a0\'a0 && Si pones burradas no obtiene nada el select (m\'e1x 99) y no quiero modificar estructura
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnBebe_cant=99
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 // ojo a esta excepci\'f3n para mayores de 45 a\'f1os
+\f1 \
+
+\f0 IF lnBebe_cant>0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 SELECT TOP 1 sexo,cantidad,tasa;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 FROM alcohol ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 WHERE alcohol.cantidad >= lnBebe_cant;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 AND alcohol.sexo = lcSexo ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ORDER BY 1,2 INTO ARRAY _LATEMP
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 IF _TALLY>0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnBebe=_LATEMP(1,3)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 \cb4 IF lnBebe>0 AND lnBebe<999 and lnEdad>45
+\f1 \cb1 \
+\pard\pardeftab720\sl480\partightenfactor0
+
+\f0 \cf2 \cb4 \'a0\'a0\'a0\'a0 lnBebe=lnBebe-25
+\f1 \cb1 \
+\pard\pardeftab720\sl480\partightenfactor0
+
+\f0 \cf2 \'a0\'a0\'a0\'a0 ENDIF
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ENDIF
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 IF tracear
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 WAIT WINDOW "Alcohol: "+PADR(lnBebe,5)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ENDIF
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 && Para ILT
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 SELECT TOP 1 sexo,cantidad,tasa;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 FROM alcohol_ilt ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 WHERE alcohol_ilt.cantidad >= lnBebe_cant;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 AND alcohol_ilt.sexo = lcSexo ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ORDER BY 1,2 INTO ARRAY _LATEMP
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 IF _TALLY>0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnBebe_ILT=_LATEMP(1,3)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ENDIF
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 ** FIN recargo por alcohol
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 && Nuevo para colesterol
+\f1 \
+
+\f0 lnColes_cant=iif(isnull(personas.s_colestt),0,personas.s_colestt)
+\f1 \
+
+\f0 IF lnColes_cant>0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 SELECT TOP 1 cantidad,hastaedad,tasa;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 FROM COLESTEROL ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 WHERE COLESTEROL .cantidad >= lnColes_cant ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 AND COLESTEROL .hastaedad >= lnEdad ;
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ORDER BY 1,2 INTO ARRAY _LATEMP
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 IF _TALLY>0
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 lnColes=_LATEMP(1,3)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 ENDIF
+\f1 \
+
+\f0 ELSE
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnColes=0
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 && Fin Colesterol
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 * Ya tengo las 5 variables con porcentajes
+\f1 \
+
+\f0 * lnIMC
+\f1 \
+
+\f0 * lnTension
+\f1 \
+
+\f0 * lnFuma
+\f1 \
+
+\f0 * lnBebe
+\f1 \
+
+\f0 * lnColes
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 && Para ILT tienen los nombres _ILT menos tensi\'f3n, que es com\'fan
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 * Comprobamos que no haya rechazos/aplazaminentos
+\f1 \
+
+\f0 local TxtMensaje
+\f1 \
+
+\f0 TxtMensaje=""
+\f1 \
+
+\f0 DO CASE
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 CASE lnIMC=-1
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 TxtMensaje="Debido a la relaci\'f3n peso/altura esta solicitud debe ser rechazada"
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 CASE lnIMC=-2
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 TxtMensaje="Debido a la relaci\'f3n peso/altura esta solicitud debe ser aplazada"
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 CASE lnTension=-1
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 TxtMensaje="Debido a la tensi\'f3n arterial esta solicitud debe ser rechazada"
+\f1 \
+
+\f0 ENDCASE
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 IF !EMPTY(TxtMensaje)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 =messagebox(TxtMensaje,64,"C\'e1lculo cancelado")
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 RETURN .f.
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 && Contamos el n\'famero de agravamientos, pues es clave luego para el recargo (usado como potencia)
+\f1 \
+
+\f0 local nagra
+\f1 \
+
+\f0 nagra=IIF(lnIMC>0,1,0)+IIF(lnTension>0,1,0)+IIF(lnFuma>0,1,0)+IIF(lnBebe>0,1,0)+IIF(lnColes>0,1,0)
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 local lnTVida,lnTInva,lnTAcci,lnTEnf,lnTILT,lnMax
+\f1 \
+
+\f0 && Estos c\'e1culos convierten a m\'faltiplos de 25, enteros, penalizando mucho (elevado a nagra) si coinciden varios motivos de recargo.
+\f1 \
+
+\f0 lnTVida=ROUND((lnIMC+lnTension+lnFuma+lnBebe+lnColes)*(1.1^(nagra-1))/25,0)*25
+\f1 \
+
+\f0 && lnTInva=lnTVida\'a0\'a0\'a0\'a0 && MPL cambia el 04/09/2018 para que calcule como Vida, pero rechazando alcohol si procede (>75)
+\f1 \
+
+\f0 lnTInva=ROUND((lnIMC+lnTension+lnFuma+IIF(lnBebe<=75,lnBebe,999)+lnColes)*(1.1^(nagra-1))/25,0)*25
+\f1 \
+
+\f0 lnTAcci=ROUND(((lnIMC/2)+lnTension+lnFuma+IIF(lnBebe<=75,lnBebe,999)+lnColes)*(1.1^(nagra-1))/25,0)*25
+\f1 \
+
+\f0 lnTEnf=ROUND((lnIMC+lnTension+(lnFuma*1.5)+lnBebe+lnColes)*(1.2^(nagra-1))/25,0)*25
+\f1 \
+
+\f0 lnTILT=ROUND((lnIMC_ILT+lnTension+lnFuma_ILT+lnBebe_ILT+lnColes)*(1.1^(nagra-1))/25,0)*25
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 IF EMPTY(lnTVida)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnTVida=0
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 IF EMPTY(lnTInva)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnTInva=0
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 IF EMPTY(lnTAcci)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnTAcci=0
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 IF EMPTY(lnTEnf)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnTEnf=0
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 IF EMPTY(lnTILT)
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 lnTILT=0
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 && Se fijan unos m\'e1ximos agravamientos que prevalecen al c\'e1lculo te\'f3rico, si se rebasa
+\f1 \
+
+\f0 lnMax=IIF(nagra<2,200,300)
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 IF lnTVida>lnMax
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 x=messagebox("Se ha excedido el l\'edmite",64,"Consulte con la Central")
+\f1 \
+
+\f0 \'a0\'a0\'a0\'a0 RETURN .f.
+\f1 \
+
+\f0 ENDIF
+\f1 \
+
+\f0 \'a0
+\f1 \
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf2 // 
+\fs26\fsmilli13333 Una vez conocido lnMax (200 o 300), si lo que se calcule como recargo de Vida supera ese l\'edmite, hay que cancelar el resto de c\'e1lculos, es decir, no mostrarlos, pues no se puede asegurar ese riesgo: si se rechaza Vida, lo dem\'e1s no procede.
+\f1\fs32 \
+\pard\pardeftab720\sl480\partightenfactor0
+
+\f0 \cf2 \'a0
+\f1 \
+
+\f0 \'a0
+\f1 \
+
+\f0 DO FORM VERTASAS WITH lnTVida,lnTInva,lnTAcci,lnTEnf,lnTILT,lnMax
+\f1 \
+}
